@@ -1,0 +1,31 @@
+*/.idea
+*/.gradle/
+*/out/
+*/build/
+
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.iml
+*.iws
+*.iml
+*.ipr
+
+
+# compiled output
+/ui/dist
+/ui/doc
+/ui/tmp
+/ui/out-tsc
+/ui/dist-server
+/ui/static
+/ui/server.js
+/ui/prerender.js
+/ui/e2e
+
+# dependencies
+/ui/node_modules
+/ui/package-lock.json
