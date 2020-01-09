@@ -1,0 +1,29 @@
+<h2>Client passport</h2>
+
+<div *ngIf="client" class="client-passports-container">
+    <div class="centerify">
+        <label for="series">series</label>
+        <input [(ngModel)]="client.passport.series"
+               type="number"
+               placeholder="Enter series"
+               id="series"
+               required>
+    </div>
+    <br>
+    <div class="centerify">
+        <label for="number">number</label>
+        <input [(ngModel)]="client.passport.number"
+               type="number"
+               placeholder="Enter number"
+               id="number"
+               required>
+    </div>
+    <br>
+    <div class="centerify">
+        <button (click)="updatePassport()"><span>Change passport</span></button>
+    </div>
+    <br>
+    <div class="centerify">
+        <button (click)="passportChanged.emit()"><span>Back</span></button>
+    </div>
+</div>

@@ -1,0 +1,198 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
+
+html, body {
+    height: 100%;
+    background: #efefef;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.disabled {
+    background-color: grey;
+    pointer-events: none;
+    cursor: default;
+}
+
+.centerify {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    font: 400 16px 'Open Sans';
+    text-transform: uppercase;
+    color: #999;
+    text-shadow: 1px 1px 1px #fff;
+    margin-bottom: 30px;
+    align-self: center;
+}
+
+/* General Buttons */
+button {
+    display: block;
+    width: 200px;
+    height: 60px;
+    background: linear-gradient(to bottom, #4eb5e5 0%,#389ed5 100%); /* W3C */
+    border: none;
+    border-radius: 5px;
+    position: relative;
+    border-bottom: 4px solid #2b8bc6;
+    color: #fbfbfb;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+    font-size: 20px;
+    text-align: left;
+    text-indent: 5px;
+    box-shadow: 0px 3px 0px 0px rgba(0,0,0,.2);
+    cursor: pointer;
+    margin: 30px auto 0;
+}
+
+
+button:active {
+    box-shadow: 0px 2px 0px 0px rgba(0,0,0,.2);
+    top: 1px;
+}
+
+button:after {
+    content: "";
+    width: 0;
+    height: 0;
+    display: block;
+    border-top: 20px solid #187dbc;
+    border-bottom: 20px solid #187dbc;
+    border-left: 16px solid transparent;
+    border-right: 20px solid #187dbc;
+    position: absolute;
+    opacity: 0.6;
+    right: 0;
+    top: 0;
+    border-radius: 0 5px 5px 0;
+}
+
+/* Button pointing left */
+
+button.back {
+    text-align: right;
+    padding-right: 12px;
+    box-sizing: border-box;
+}
+button.back:after {
+    content: "";
+    width: 0;
+    height: 0;
+    display: block;
+    border-top: 20px solid #187dbc;
+    border-bottom: 20px solid #187dbc;
+    border-right: 16px solid transparent;
+    border-left: 20px solid #187dbc;
+    position: absolute;
+    opacity: 0.6;
+    left: 0;
+    top: 0;
+    border-radius: 5px 0 0 5px;
+}
+
+/* Single buttons */
+
+button.site {
+    width: 40px;
+    text-align: center;
+    text-indent: 0;
+}
+button.site:after{
+    display: none;
+}
+
+.select-css {
+    display: block;
+    font-size: 16px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #FFF;
+    line-height: 1.3;
+    padding: .6em 1.4em .5em .8em;
+    width: 15%;
+    text-align-last: center;
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    border-radius: .5em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: coral;
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+}
+.select-css::-ms-expand {
+    display: none;
+}
+.select-css:hover {
+    border-color: #888;
+}
+.select-css:focus {
+    border-color: #FFF;
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #FFF;
+    outline: none;
+}
+.select-css option {
+    font-weight:normal;
+}
+
+input {
+    position: relative;
+    font-size: 1.5em;
+    background: coral;
+    padding: 3px;
+    display: inline-block;
+    border-radius: 8px;
+    color: #FFFFFF;
+}
+
+label {
+    padding-right: 30px;
+}
+
+label:last-child {
+    padding-right: 0;
+}
+
+
+td {
+    border: 2px solid #d4311e;
+    padding: 10px;
+}
+
+tr:hover {
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    width: 200px;
+    text-align: center;
+
+}
+
+caption {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+tr th {
+    font-weight: bold;
+    font-size: 15px;
+    background-color: coral;
+    padding: 10px;
+    border: 2px solid #d4311e;
+    text-align: center;
+}

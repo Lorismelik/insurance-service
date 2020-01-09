@@ -1,0 +1,20 @@
+<h2>Broker requests</h2>
+
+<div *ngIf="brokerRequests" class="broker-requests-container">
+    <div class="centerify">
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+            </tr>
+            <tr *ngFor="let request of brokerRequests" (click)="onRequestClick(request)">
+                <td>{{request.id}}</td>
+                <td>{{request.date}}</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div class="centerify">
+        <button [routerLink]="'/broker/base'"><span>Back</span></button>
+    </div>
+</div>

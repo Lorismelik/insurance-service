@@ -1,0 +1,29 @@
+<h2>Request</h2>
+
+<div *ngIf="clientRequest" class="client-current-request-container">
+
+    <div class="centerify">
+        <table>
+            <tr>
+                <th>Request type</th>
+                <th>Date</th>
+                <th>Quantity</th>
+                <th>From type</th>
+                <th>To type</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>{{clientRequest.requestType}}</td>
+                <td>{{clientRequest.date}}</td>
+                <td>{{clientRequest.quantity}}</td>
+                <td>{{clientRequest.fromType}}</td>
+                <td>{{clientRequest.toType}}</td>
+                <td>{{clientRequest.status}}</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div class="centerify">
+        <button [routerLink]="'/client/requests'"><span>Back</span></button>
+    </div>
+</div>
