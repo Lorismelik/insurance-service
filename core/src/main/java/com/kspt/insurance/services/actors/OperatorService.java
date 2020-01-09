@@ -63,9 +63,9 @@ public class OperatorService extends CrudService<Operator, OperatorRepository> {
     }
 
     @Transactional
-    public CreatePolisRequest delegateCreateRequestToAgent(@NotNull final Long requestId,
+    public CreatePolisRequest delegateCreateRequestToAgent(@NotNull final Long operatorId,
                                                            @NotNull final Map<String, String> data) {
-        Long operatorId = Long.parseLong(data.get("operatorId"));
+        Long requestId = Long.parseLong(data.get("requestId"));
         Operator operator = repository.findById(operatorId).orElse(null);
         if (operator == null || !operator.getIsAuthenticated()) return null;
         Long agentId = Long.parseLong(data.get("agentId"));
@@ -90,9 +90,9 @@ public class OperatorService extends CrudService<Operator, OperatorRepository> {
     }
 
     @Transactional
-    public InsurancePaymentsRequest delegateGetInsurancePaymentsRequestToAgent(@NotNull final Long requestId,
+    public InsurancePaymentsRequest delegateGetInsurancePaymentsRequestToAgent(@NotNull final Long operatorId,
                                                                                @NotNull final Map<String, String> data) {
-        Long operatorId = Long.parseLong(data.get("operatorId"));
+        Long requestId = Long.parseLong(data.get("requestId"));
         Operator operator = repository.findById(operatorId).orElse(null);
         if (operator == null || !operator.getIsAuthenticated()) return null;
         Long agentId = Long.parseLong(data.get("agentId"));
@@ -150,9 +150,9 @@ public class OperatorService extends CrudService<Operator, OperatorRepository> {
     }
 
     @Transactional
-    public CreatePolisRequest makeDecisionForCreateRequest(@NotNull final Long requestId,
+    public CreatePolisRequest makeDecisionForCreateRequest(@NotNull final Long operatorId,
                                                            @NotNull final Map<String, String> data) {
-        Long operatorId = Long.parseLong(data.get("operatorId"));
+        Long requestId = Long.parseLong(data.get("requestId"));
         Operator operator = repository.findById(operatorId).orElse(null);
         if (operator == null || !operator.getIsAuthenticated()) return null;
         boolean approved = Boolean.parseBoolean(data.get("approved"));
@@ -170,9 +170,9 @@ public class OperatorService extends CrudService<Operator, OperatorRepository> {
     }
 
     @Transactional
-    public InsurancePaymentsRequest makeDecisionForGetInsurancePaymentsRequest(@NotNull final Long requestId,
+    public InsurancePaymentsRequest makeDecisionForGetInsurancePaymentsRequest(@NotNull final Long operatorId,
                                                            @NotNull final Map<String, String> data) {
-        Long operatorId = Long.parseLong(data.get("operatorId"));
+        Long requestId = Long.parseLong(data.get("requestId"));
         Operator operator = repository.findById(operatorId).orElse(null);
         if (operator == null || !operator.getIsAuthenticated()) return null;
         boolean approved = Boolean.parseBoolean(data.get("approved"));
@@ -197,9 +197,9 @@ public class OperatorService extends CrudService<Operator, OperatorRepository> {
     }
 
     @Transactional
-    public UpdatePolisDataRequest makeDecisionForUpdateDataRequest(@NotNull final Long requestId,
+    public UpdatePolisDataRequest makeDecisionForUpdateDataRequest(@NotNull final Long operatorId,
                                                            @NotNull final Map<String, String> data) {
-        Long operatorId = Long.parseLong(data.get("operatorId"));
+        Long requestId = Long.parseLong(data.get("requestId"));
         Operator operator = repository.findById(operatorId).orElse(null);
         if (operator == null || !operator.getIsAuthenticated()) return null;
         boolean approved = Boolean.parseBoolean(data.get("approved"));

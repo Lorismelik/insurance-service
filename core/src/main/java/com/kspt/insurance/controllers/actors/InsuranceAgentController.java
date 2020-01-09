@@ -20,12 +20,14 @@ public final class InsuranceAgentController extends CrudController<InsuranceAgen
         super(service);
     }
 
+    // requestId, data
     @PostMapping("{agentId}/processCreateRequest")
     public CreatePolisRequest processCreateRequest(@PathVariable final Long agentId,
                                             @RequestBody final Map<String, String> data) {
         return service.processCreatePolisRequest(agentId, data);
     }
 
+    // requestId, review, payments
     @PostMapping("{agentId}/processGetInsurancePaymentsRequest")
     public InsurancePaymentsRequest processGetInsurancePaymentsRequest(@PathVariable final Long agentId,
                                                                        @RequestBody final Map<String, String> data) {

@@ -21,16 +21,18 @@ public final class OperatorController extends CrudController<Operator, OperatorS
         super(service);
     }
 
-    @PostMapping("{requestId}/delegateCreate")
-    public CreatePolisRequest delegateCreateRequest(@PathVariable final Long requestId,
+    // requestId, agentId
+    @PostMapping("{operatorId}/delegateCreate")
+    public CreatePolisRequest delegateCreateRequest(@PathVariable final Long operatorId,
                                                     @RequestBody final Map<String, String> data) {
-        return service.delegateCreateRequestToAgent(requestId, data);
+        return service.delegateCreateRequestToAgent(operatorId, data);
     }
 
-    @PostMapping("{requestId}/delegateGetInsurancePayments")
-    public InsurancePaymentsRequest delegateGetInsurancePayments(@PathVariable final Long requestId,
+    // requestId, agentId
+    @PostMapping("{operatorId}/delegateGetInsurancePayments")
+    public InsurancePaymentsRequest delegateGetInsurancePayments(@PathVariable final Long operatorId,
                                                                  @RequestBody final Map<String, String> data) {
-        return service.delegateGetInsurancePaymentsRequestToAgent(requestId, data);
+        return service.delegateGetInsurancePaymentsRequestToAgent(operatorId, data);
     }
 
     @GetMapping("{operatorId}/checkUnresolvedCreate")
@@ -52,23 +54,24 @@ public final class OperatorController extends CrudController<Operator, OperatorS
     public List<CreatePolisRequest> getCreateRequestsById(@PathVariable final Long operatorId) {
         return service.getCreateRequestsByOperator(operatorId);
     }
-
-    @PostMapping("{requestId}/approveCreate")
-    public CreatePolisRequest makeDecisionForCreateRequest(@PathVariable final Long requestId,
+    // requestId, approved, cost
+    @PostMapping("{operatorId}/approveCreate")
+    public CreatePolisRequest makeDecisionForCreateRequest(@PathVariable final Long operatorId,
                                                            @RequestBody final Map<String, String> data) {
-        return service.makeDecisionForCreateRequest(requestId, data);
+        return service.makeDecisionForCreateRequest(operatorId, data);
+    }
+    // requestId, approved, newData
+    @PostMapping("{operatorId}/approveUpdateData")
+    public UpdatePolisDataRequest makeDecisionForUpdateDataRequest(@PathVariable final Long operatorId,
+                                                                   @RequestBody final Map<String, String> data) {
+        return service.makeDecisionForUpdateDataRequest(operatorId, data);
     }
 
-    @PostMapping("{requestId}/approveUpdateData")
-    public UpdatePolisDataRequest makeDecisionForUpdateDataRequest(@PathVariable final Long requestId,
+    // requestId, approved
+    @PostMapping("{operatorId}/approveGetInsurancePayments")
+    public InsurancePaymentsRequest makeDecisionForGetInsurancePaymentsRequest(@PathVariable final Long operatorId,
                                                                    @RequestBody final Map<String, String> data) {
-        return service.makeDecisionForUpdateDataRequest(requestId, data);
-    }
-
-    @PostMapping("{requestId}/approveGetInsurancePayments")
-    public InsurancePaymentsRequest makeDecisionForGetInsurancePaymentsRequest(@PathVariable final Long requestId,
-                                                                   @RequestBody final Map<String, String> data) {
-        return service.makeDecisionForGetInsurancePaymentsRequest(requestId, data);
+        return service.makeDecisionForGetInsurancePaymentsRequest(operatorId, data);
     }
 
     @GetMapping("{operatorId}/updateBank/{money}")

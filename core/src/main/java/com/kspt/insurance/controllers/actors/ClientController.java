@@ -22,18 +22,21 @@ public final class ClientController extends CrudController<Client, ClientService
         super(clientService);
     }
 
+    // series, number
     @PostMapping("{clientId}/setPassport")
     public Client setPassport(@PathVariable final Long clientId,
                               @RequestBody final Map<String, String> data) {
         return service.setPassport(clientId, data);
     }
 
+    // phone
     @PostMapping("{clientId}/setPhone")
     public Client setPhone(@PathVariable final Long clientId,
                               @RequestBody final Map<String, String> data) {
         return service.setPhone(clientId, data);
     }
 
+    // period
     @PostMapping("{clientId}/createPolis")
     public CreatePolisRequest createPolis(@PathVariable final Long clientId,
                                           @RequestBody final Map<String, String> data) {
@@ -46,18 +49,21 @@ public final class ClientController extends CrudController<Client, ClientService
         return service.closePolis(clientId, polisId);
     }
 
+    // additionalData
     @PostMapping("{clientId}/CreateGetInsurancePaymentsRequest")
     public InsurancePaymentsRequest getInsurancePayments(@PathVariable final Long clientId,
                                                          @RequestBody final Map<String, String> data) {
         return service.createRequestForInsurancePayments(clientId, data);
     }
 
+    // newData, polisId
     @PostMapping("{clientId}/createUpdatePolisRequest")
     public UpdatePolisDataRequest updatePolis(@PathVariable final Long clientId,
                                               @RequestBody final Map<String, String> data) {
         return service.createRequestForUpdatePolis(clientId, data);
     }
 
+    // requestId
     @PostMapping("{clientId}/payForPolis")
     public InsurancePolis payForPolis(@PathVariable final Long clientId,
                                       @RequestBody final Map<String, String> data) {
