@@ -19,6 +19,18 @@ html, body {
     justify-content: center;
 }
 
+.inner-form {
+    margin-top: 30px;
+    display: block;
+    text-align: left;
+}
+
+.twin-grid {
+    display: inline-grid;
+    text-align: left;
+    grid-template-columns: 80px 200px
+}
+
 h2 {
     font: 400 16px 'Open Sans';
     text-transform: uppercase;
@@ -61,9 +73,9 @@ button:after {
     width: 0;
     height: 0;
     display: block;
-    border-top: 20px solid #187dbc;
-    border-bottom: 20px solid #187dbc;
-    border-left: 16px solid transparent;
+    border-top: 29px solid #187dbc;
+    border-bottom: 28px solid #187dbc;
+    border-left: 20px solid transparent;
     border-right: 20px solid #187dbc;
     position: absolute;
     opacity: 0.6;
@@ -95,8 +107,6 @@ button.back:after {
     border-radius: 5px 0 0 5px;
 }
 
-/* Single buttons */
-
 button.site {
     width: 40px;
     text-align: center;
@@ -107,14 +117,13 @@ button.site:after{
 }
 
 .select-css {
-    display: block;
     font-size: 16px;
     font-family: sans-serif;
     font-weight: 700;
     color: #FFF;
     line-height: 1.3;
     padding: .6em 1.4em .5em .8em;
-    width: 15%;
+    min-width: 100px;
     text-align-last: center;
     box-sizing: border-box;
     margin: 0;
@@ -124,7 +133,7 @@ button.site:after{
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
-    background-color: coral;
+    background-color: #4eb5e5;
     background-repeat: no-repeat, repeat;
     background-position: right .7em top 50%, 0 0;
     background-size: .65em auto, 100%;
@@ -149,11 +158,11 @@ button.site:after{
 input {
     position: relative;
     font-size: 1.5em;
-    background: coral;
+    background: #4eb5e5;
     padding: 3px;
     display: inline-block;
     border-radius: 8px;
-    color: #FFFFFF;
+    color: #efefef;
 }
 
 label {
@@ -191,7 +200,7 @@ caption {
 tr th {
     font-weight: bold;
     font-size: 15px;
-    background-color: coral;
+    background-color: #efefef;
     padding: 10px;
     border: 2px solid #d4311e;
     text-align: center;

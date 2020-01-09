@@ -1,0 +1,32 @@
+<h2>Operator information</h2>
+
+<div *ngIf="operator" class="operator-info-container">
+    <div class="centerify">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Account</th>
+                <th>Role</th>
+            </tr>
+            <tr>
+                <td>{{operator.name}}</td>
+                <td>{{wallet}}</td>
+                <td>{{operator.personType}}</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <label for="account">Update amount</label>
+    <input [(ngModel)]="account"
+           type="account"
+           placeholder="0"
+           name="account"
+           id="account">
+    <div class="centerify">
+        <button (click)="onUpdateClick(account)"><span>Update wallet</span></button>
+    </div>
+    <br>
+    <div class="centerify">
+        <button [routerLink]="'/operator/base'"><span>Back</span></button>
+    </div>
+</div>

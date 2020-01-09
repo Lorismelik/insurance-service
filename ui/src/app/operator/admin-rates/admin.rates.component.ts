@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Rate} from "../../models";
-import {AdminService} from "../../services/admin.service";
+import {OperatorService} from "../../services/operator.service";
 
 @Component({
     templateUrl: './admin.rates.component.html'
@@ -8,7 +8,7 @@ import {AdminService} from "../../services/admin.service";
 export class AdminRatesComponent implements OnInit {
     protected rates: Rate[];
 
-    constructor(private adminService: AdminService) {
+    constructor(private adminService: OperatorService) {
         this.adminService.getRates().subscribe(data => this.rates = data);
     }
 

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ClientRequest} from '../../models';
 import {Router} from '@angular/router';
-import {AdminService} from '../../services/admin.service';
+import {OperatorService} from '../../services/operator.service';
 import {StoreService} from "../../services/store.service";
 
 @Component({
@@ -14,7 +14,7 @@ export class AdminRequestComponent implements OnInit {
 
     constructor(private router: Router,
                 private storeService: StoreService,
-                private adminService: AdminService) {
+                private adminService: OperatorService) {
         this.adminId = this.storeService.getId();
         this.requestId = this.storeService.getPropertyId();
         this.adminService.checkRequests(this.adminId)
@@ -26,11 +26,11 @@ export class AdminRequestComponent implements OnInit {
 
     approve() {
         this.adminService.approveRequest(this.adminId, this.requestId)
-            .subscribe(() => this.router.navigateByUrl('/admin/requests'));
+            .subscribe(() => this.router.navigateByUrl('/operator/base'));
     }
 
     decline() {
         this.adminService.declineRequest(this.requestId)
-            .subscribe(() => this.router.navigateByUrl('/admin/requests'));
+            .subscribe(() => this.router.navigateByUrl('/operator/base'));
     }
 }

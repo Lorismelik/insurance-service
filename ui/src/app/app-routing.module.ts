@@ -29,13 +29,13 @@ import {BrokerRequestsComponent} from "./broker/broker-requests/broker.requests.
 import {BrokerRequestComponent} from "./broker/broker-request/broker.request.component";
 import {BrokerAgreementsComponent} from "./broker/broker-agreements/broker.agreements.component";
 import {BrokerAgreementComponent} from "./broker/broker-agreement/broker.agreement.component";
-import {AdminBaseComponent} from "./admin/admin-base/admin.base.component";
-import {AdminInfoComponent} from "./admin/admin-info/admin.info.component";
-import {AdminBrokersComponent} from "./admin/admin-brokers/admin.brokers.component";
-import {AdminRequestsComponent} from "./admin/admin-requests/admin.requests.component";
-import {AdminRequestComponent} from "./admin/admin-request/admin.request.component";
-import {AdminRatesComponent} from "./admin/admin-rates/admin.rates.component";
-import {AdminBankComponent} from "./admin/admin-bank/admin.bank.component";
+import {OperatorBaseComponent} from "./operator/operator-base/operator.base.component";
+import {OperatorInfoComponent} from "./operator/operator-info/operator.info.component";
+import {AdminBrokersComponent} from "./operator/admin-brokers/admin.brokers.component";
+import {OperatorUnparentedRequestsComponent} from "./operator/operator-requests/operator.unparented.requests.component";
+import {AdminRequestComponent} from "./operator/admin-request/admin.request.component";
+import {AdminRatesComponent} from "./operator/admin-rates/admin.rates.component";
+import {AdminBankComponent} from "./operator/admin-bank/admin.bank.component";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -67,13 +67,13 @@ const routes: Routes = [
     {path: 'broker/request/:id', component: BrokerRequestComponent},
     {path: 'broker/agreements', component: BrokerAgreementsComponent},
     {path: 'broker/agreement/:id', component: BrokerAgreementComponent},
-    {path: 'admin/base', component: AdminBaseComponent},
-    {path: 'admin/info', component: AdminInfoComponent},
-    {path: 'admin/brokers', component: AdminBrokersComponent},
-    {path: 'admin/requests', component: AdminRequestsComponent},
-    {path: 'admin/request/:id', component: AdminRequestComponent},
-    {path: 'admin/rates', component: AdminRatesComponent},
-    {path: 'admin/bank', component: AdminBankComponent},
+    {path: 'operator/base', component: OperatorBaseComponent},
+    {path: 'operator/info', component: OperatorInfoComponent},
+    {path: 'operator/brokers', component: AdminBrokersComponent},
+    {path: 'operator/requests/opened', component: OperatorUnparentedRequestsComponent},
+    {path: 'operator/request/:id', component: AdminRequestComponent},
+    {path: 'operator/rates', component: AdminRatesComponent},
+    {path: 'operator/bank', component: AdminBankComponent},
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BankRecord} from "../../models";
-import {AdminService} from "../../services/admin.service";
+import {OperatorService} from "../../services/operator.service";
 
 @Component({
     templateUrl: './admin.bank.component.html'
@@ -8,7 +8,7 @@ import {AdminService} from "../../services/admin.service";
 export class AdminBankComponent implements OnInit {
     protected bank: BankRecord[];
 
-    constructor(private adminService: AdminService) {
+    constructor(private adminService: OperatorService) {
         this.adminService.getBankMoney().subscribe(data => this.bank = data);
     }
 

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Broker} from "../../models";
-import {AdminService} from "../../services/admin.service";
+import {OperatorService} from "../../services/operator.service";
 import {StoreService} from "../../services/store.service";
 
 @Component({
@@ -11,7 +11,7 @@ export class AdminBrokersComponent implements OnInit {
     private adminBrokers: Broker[];
 
     constructor(private storeService: StoreService,
-                private adminService: AdminService) {
+                private adminService: OperatorService) {
         this.adminId = this.storeService.getId();
         this.adminService.getBrokers(this.adminId).subscribe(data => this.adminBrokers = data);
     }

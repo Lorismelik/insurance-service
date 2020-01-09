@@ -1,17 +1,21 @@
 <h2>Sign In</h2>
 
 <div class="signIn-container">
-    <div class="centerify">
+    <div class="twin-grid">
+    <div class="inner-form">
         <label for="login">Login</label>
+    </div>
+    <div class="inner-form">
         <input [(ngModel)]="login"
                type="text"
                placeholder="Enter Login"
                name="login" id="login"
                required>
     </div>
-    <br>
-    <div class="centerify">
+    <div class="inner-form">
         <label for="password">Password</label>
+    </div>
+    <div class="inner-form">
         <input [(ngModel)]="password"
                type="password"
                placeholder="Enter Password"
@@ -19,25 +23,22 @@
                id="password"
                required>
     </div>
-    <br>
-    <div class="centerify">
-        <label for="personType">Person type</label>
+    <div class="inner-form">
+        <label for="personType">Role</label>
+    </div>
+    <div class="inner-form">
         <select class="select-css" [(ngModel)]="personType"
                 name="personType"
                 id="personType"
                 required="">
-            <option value="client"><span>client</span></option>
-            <option value="broker"><span>broker</span></option>
-            <option value="admin"><span>admin</span></option>
+            <option value="client">Client</option>
+            <option value="operator">Operator</option>
+            <option value="insuranceAgent">Insurance agent</option>
         </select>
     </div>
-    <br>
-
-    <div class="centerify">
+    <div class="inner-form">
         <span><button (click)="signIn()"><span>Sign In</span></button></span>
-    </div>
-    <br>
-    <div class="centerify">
         <span><button [routerLink]="''"><span>Back</span></button></span>
+    </div>
     </div>
 </div>

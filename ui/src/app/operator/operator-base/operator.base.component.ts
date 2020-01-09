@@ -4,9 +4,9 @@ import {StoreService} from "../../services/store.service";
 import {Router} from "@angular/router";
 
 @Component({
-    templateUrl: './admin.base.component.html'
+    templateUrl: './operator.base.component.html'
 })
-export class AdminBaseComponent implements OnInit {
+export class OperatorBaseComponent implements OnInit {
     private adminId: number;
 
     constructor(private router: Router,
@@ -19,7 +19,7 @@ export class AdminBaseComponent implements OnInit {
     }
 
     signOut() {
-        this.authService.signOut(this.adminId, 'admin')
+        this.authService.signOut(this.adminId, 'operator')
             .subscribe(() =>  this.router.navigateByUrl('/'));
     }
 }

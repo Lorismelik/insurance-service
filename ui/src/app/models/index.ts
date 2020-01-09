@@ -1,4 +1,4 @@
-export * from './actors/admin.model';
+export * from './actors/operator.model';
 export * from './actors/broker.model';
 export * from './actors/client.model';
 export * from './actors/person.model';

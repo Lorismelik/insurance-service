@@ -31,7 +31,7 @@ import {ClientAssetComponent} from "./client/client-asset/client.asset.component
 import {ClientStocksComponent} from "./client/client-stocks/client.stocks.component";
 import {ClientStockComponent} from "./client/client-stock/client.stock.component";
 import {ClientService} from "./services/client.service";
-import {AdminService} from "./services/admin.service";
+import {OperatorService} from "./services/operator.service";
 import {BrokerService} from "./services/broker.service";
 import {BrokerBaseComponent} from "./broker/broker-base/broker.base.component";
 import {BrokerInfoComponent} from "./broker/broker-info/broker.info.component";
@@ -39,13 +39,13 @@ import {BrokerRequestsComponent} from "./broker/broker-requests/broker.requests.
 import {BrokerRequestComponent} from "./broker/broker-request/broker.request.component";
 import {BrokerAgreementsComponent} from "./broker/broker-agreements/broker.agreements.component";
 import {BrokerAgreementComponent} from "./broker/broker-agreement/broker.agreement.component";
-import {AdminBaseComponent} from "./admin/admin-base/admin.base.component";
-import {AdminInfoComponent} from "./admin/admin-info/admin.info.component";
-import {AdminBrokersComponent} from "./admin/admin-brokers/admin.brokers.component";
-import {AdminRequestsComponent} from "./admin/admin-requests/admin.requests.component";
-import {AdminRequestComponent} from "./admin/admin-request/admin.request.component";
-import {AdminRatesComponent} from "./admin/admin-rates/admin.rates.component";
-import {AdminBankComponent} from "./admin/admin-bank/admin.bank.component";
+import {OperatorBaseComponent} from "./operator/operator-base/operator.base.component";
+import {OperatorInfoComponent} from "./operator/operator-info/operator.info.component";
+import {AdminBrokersComponent} from "./operator/admin-brokers/admin.brokers.component";
+import {OperatorUnparentedRequestsComponent} from "./operator/operator-requests/operator.unparented.requests.component";
+import {AdminRequestComponent} from "./operator/admin-request/admin.request.component";
+import {AdminRatesComponent} from "./operator/admin-rates/admin.rates.component";
+import {AdminBankComponent} from "./operator/admin-bank/admin.bank.component";
 import {StoreService} from './services/store.service';
 
 @NgModule({
@@ -80,10 +80,10 @@ import {StoreService} from './services/store.service';
         BrokerRequestComponent,
         BrokerAgreementsComponent,
         BrokerAgreementComponent,
-        AdminBaseComponent,
-        AdminInfoComponent,
+        OperatorBaseComponent,
+        OperatorInfoComponent,
         AdminBrokersComponent,
-        AdminRequestsComponent,
+        OperatorUnparentedRequestsComponent,
         AdminRequestComponent,
         AdminRatesComponent,
         AdminBankComponent
@@ -97,7 +97,7 @@ import {StoreService} from './services/store.service';
     ],
     providers: [
         AuthService,
-        AdminService,
+        OperatorService,
         BrokerService,
         ClientService,
         StoreService
