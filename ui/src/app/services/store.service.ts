@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class StoreService {
-
     private id: number;
+    private role: RoleEnum;
     private propertyId: number;
 
     constructor() {
@@ -25,4 +25,15 @@ export class StoreService {
         this.propertyId = propertyId;
     }
 
+    getRole(): RoleEnum {
+        return this.role;
+    }
+
+    setRole(value: string) {
+        switch (value) {
+            case 'client': this.role = RoleEnum.Client; break;
+            case 'insuranceAgent': this.role = RoleEnum.InsuranceAgent; break;
+            case 'operator':  this.role = RoleEnum.Operator;
+        }
+    }
 }

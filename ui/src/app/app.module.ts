@@ -32,7 +32,7 @@ import {ClientStocksComponent} from "./client/client-stocks/client.stocks.compon
 import {ClientStockComponent} from "./client/client-stock/client.stock.component";
 import {ClientService} from "./services/client.service";
 import {OperatorService} from "./services/operator.service";
-import {BrokerService} from "./services/broker.service";
+import {AgentService} from "./services/agent.service";
 import {BrokerBaseComponent} from "./broker/broker-base/broker.base.component";
 import {BrokerInfoComponent} from "./broker/broker-info/broker.info.component";
 import {BrokerRequestsComponent} from "./broker/broker-requests/broker.requests.component";
@@ -43,10 +43,10 @@ import {OperatorBaseComponent} from "./operator/operator-base/operator.base.comp
 import {OperatorInfoComponent} from "./operator/operator-info/operator.info.component";
 import {AdminBrokersComponent} from "./operator/admin-brokers/admin.brokers.component";
 import {OperatorUnparentedRequestsComponent} from "./operator/operator-requests/operator.unparented.requests.component";
-import {AdminRequestComponent} from "./operator/admin-request/admin.request.component";
 import {AdminRatesComponent} from "./operator/admin-rates/admin.rates.component";
 import {AdminBankComponent} from "./operator/admin-bank/admin.bank.component";
 import {StoreService} from './services/store.service';
+import {CreateRequestPopup} from './request/create.request.popup';
 
 @NgModule({
     declarations: [
@@ -84,9 +84,9 @@ import {StoreService} from './services/store.service';
         OperatorInfoComponent,
         AdminBrokersComponent,
         OperatorUnparentedRequestsComponent,
-        AdminRequestComponent,
         AdminRatesComponent,
-        AdminBankComponent
+        AdminBankComponent,
+        CreateRequestPopup
     ],
     imports: [
         CommonModule,
@@ -98,7 +98,7 @@ import {StoreService} from './services/store.service';
     providers: [
         AuthService,
         OperatorService,
-        BrokerService,
+        AgentService,
         ClientService,
         StoreService
     ],

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Agreement} from "../../models";
-import {BrokerService} from "../../services/broker.service";
+import {AgentService} from "../../services/agent.service";
 import {StoreService} from "../../services/store.service";
 
 @Component({
@@ -12,7 +12,7 @@ export class BrokerAgreementComponent implements OnInit {
     protected brokerAgreement: Agreement;
 
     constructor(private storeService: StoreService,
-                private brokerService: BrokerService) {
+                private brokerService: AgentService) {
         this.brokerId = this.storeService.getId();
         this.agreementId = this.storeService.getPropertyId();
         this.brokerService.getById(this.brokerId).subscribe(data => {

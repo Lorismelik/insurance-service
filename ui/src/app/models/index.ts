@@ -1,5 +1,5 @@
 export * from './actors/operator.model';
-export * from './actors/broker.model';
+export * from './actors/agent.model';
 export * from './actors/client.model';
 export * from './actors/person.model';
 export * from './system/agreement.model';

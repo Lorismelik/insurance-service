@@ -33,7 +33,6 @@ import {OperatorBaseComponent} from "./operator/operator-base/operator.base.comp
 import {OperatorInfoComponent} from "./operator/operator-info/operator.info.component";
 import {AdminBrokersComponent} from "./operator/admin-brokers/admin.brokers.component";
 import {OperatorUnparentedRequestsComponent} from "./operator/operator-requests/operator.unparented.requests.component";
-import {AdminRequestComponent} from "./operator/admin-request/admin.request.component";
 import {AdminRatesComponent} from "./operator/admin-rates/admin.rates.component";
 import {AdminBankComponent} from "./operator/admin-bank/admin.bank.component";
 
@@ -71,7 +70,6 @@ const routes: Routes = [
     {path: 'operator/info', component: OperatorInfoComponent},
     {path: 'operator/brokers', component: AdminBrokersComponent},
     {path: 'operator/requests/opened', component: OperatorUnparentedRequestsComponent},
-    {path: 'operator/request/:id', component: AdminRequestComponent},
     {path: 'operator/rates', component: AdminRatesComponent},
     {path: 'operator/bank', component: AdminBankComponent},
 ];

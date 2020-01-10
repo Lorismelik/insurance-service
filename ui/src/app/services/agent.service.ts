@@ -1,19 +1,23 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../core/enviroment';
-import {Broker, ClientRequest} from '../models';
+import {Agent, ClientRequest} from '../models';
 
 @Injectable()
-export class BrokerService {
+export class AgentService {
     protected readonly http: HttpClient;
 
     constructor(http: HttpClient) {
         this.http = http;
     }
 
-    getById(brokerId: number) {
-        const url = this.urlWithBrokerId(environment.getBrokerById, brokerId);
-        return this.http.get<Broker>(url);
+    getById(agentId: number) {
+        const url = this.urlWithBrokerId(environment.getAgentById, agentId);
+        return this.http.get<Agent>(url);
+    }
+
+    getAll() {
+        return this.http.get<Agent[]>(environment.getAllAgents);
     }
 
     checkRequests(brokerId: number) {
@@ -36,8 +40,8 @@ export class BrokerService {
         return this.http.post(url, {clientRequestId});
     }
 
-    private urlWithBrokerId(urlWithoutId: string, brokerId: number): string {
-        return urlWithoutId.replace(':brokerId', `${brokerId}`);
+    private urlWithBrokerId(urlWithoutId: string, agentId: number): string {
+        return urlWithoutId.replace(':agentId', `${agentId}`);
     }
 
 }

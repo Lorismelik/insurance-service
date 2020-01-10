@@ -1,6 +1,6 @@
 const baseUrl = 'http://localhost:8080/api/';
 const operatorPrefix = baseUrl + 'operator/';
-const brokerPrefix = baseUrl + 'broker/';
+const agentPrefix = baseUrl + 'agent/';
 const clientPrefix = baseUrl + 'client/';
 const systemPrefix = baseUrl + 'system/';
 
@@ -23,12 +23,10 @@ export function createEnv() {
         getClientRequests: clientPrefix + ':clientId/getRequests',
         getClientRequestById: clientPrefix + ':clientId/request/:id',
 
-        getBroker: brokerPrefix,
-        getBrokerById: brokerPrefix + 'get/:brokerId',
-        checkBrokerRequests: brokerPrefix + ':brokerId/checkRequests',
-        validateClientRequest: brokerPrefix + ':brokerId/validateClientRequest',
-        approveClientRequest: brokerPrefix + ':brokerId/approveClientRequest',
-        declineClientRequest: brokerPrefix + ':brokerId/declineClientRequest',
+        checkBrokerRequests: agentPrefix + ':brokerId/checkRequests',
+        validateClientRequest: agentPrefix + ':brokerId/validateClientRequest',
+        approveClientRequest: agentPrefix + ':brokerId/approveClientRequest',
+        declineClientRequest: agentPrefix + ':brokerId/declineClientRequest',
 
         getOperator: operatorPrefix,
         getOperatorById: operatorPrefix + 'get/:operatorId',
@@ -42,10 +40,13 @@ export function createEnv() {
         signUp: systemPrefix + 'signUp',
         signOut: systemPrefix + 'signOut',
 
-
         checkUnparentedCreateRequests: operatorPrefix + ':operatorId/checkUnresolvedCreate',
         checkUnresolvedUpdateDataRequests: operatorPrefix + ':operatorId/checkUnresolvedUpdateData',
-        checkUnresolvedGetInsurancePaymentsRequests: operatorPrefix + ':operatorId/checkUnresolvedGetInsurancePayments'
+        checkUnresolvedGetInsurancePaymentsRequests: operatorPrefix + ':operatorId/checkUnresolvedGetInsurancePayments',
+
+        getAgent: agentPrefix,
+        getAgentById: agentPrefix + 'get/:agentId',
+        getAllAgents: agentPrefix + 'getAll'
     };
 }
 

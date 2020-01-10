@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Broker} from "../../models";
+import {Agent} from '../../models';
 import {OperatorService} from "../../services/operator.service";
 import {StoreService} from "../../services/store.service";
 
@@ -8,7 +8,7 @@ import {StoreService} from "../../services/store.service";
 })
 export class AdminBrokersComponent implements OnInit {
     private adminId: number;
-    private adminBrokers: Broker[];
+    private adminBrokers: Agent[];
 
     constructor(private storeService: StoreService,
                 private adminService: OperatorService) {

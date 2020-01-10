@@ -78,6 +78,10 @@
         </div>
     </div>
     <br>
+    <create-request-popup *ngIf="showCreateRequestPopup"
+                          [request]="createRequest"
+                          [role]="this.storeService.getRole()"
+                          (onCloseEvent)="onCloseCreateRequestPopup()"> </create-request-popup>
     <div class="centerify">
         <button [routerLink]="'/operator/base'"><span>Back</span></button>
     </div>

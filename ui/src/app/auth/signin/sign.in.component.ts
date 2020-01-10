@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
-import {Person} from '../../models';
 import {Router} from '@angular/router';
 import {StoreService} from '../../services/store.service';
 
@@ -10,8 +9,6 @@ import {StoreService} from '../../services/store.service';
 export class SignInComponent implements OnInit {
     public login: string;
     public password: string;
-    public personType: string;
-    public person: Person;
 
     constructor(private router: Router,
                 private authService: AuthService,
@@ -23,20 +20,21 @@ export class SignInComponent implements OnInit {
     }
 
     signIn() {
-        if (this.login.length === 0 || this.password.length === 0 || this.personType.length === 0) {
+        if (this.login.length === 0 || this.password.length === 0) {
             alert('You must fill all fields');
         }
 
-        this.authService.signIn(this.login, this.password, this.personType).subscribe(
+        this.authService.signIn(this.login, this.password).subscribe(
             data => {
                 if (!data) {
-                    alert(`No ${this.personType} with your credentials`);
+                    alert(`No with your credentials`);
                 } else {
                     this.storeService.setId(data.id);
-                    switch (this.personType) {
-                        case 'client': return this.router.navigateByUrl('/client/base');
-                        case 'insuranceAgent': return this.router.navigateByUrl('/insuranceAgent/base');
-                        case 'operator': return this.router.navigateByUrl('/operator/base');
+                    this.storeService.setRole(data.personType);
+                    switch (this.storeService.getRole()) {
+                        case RoleEnum.Client: return this.router.navigateByUrl('/client/base');
+                        case  RoleEnum.InsuranceAgent: return this.router.navigateByUrl('/insuranceAgent/base');
+                        case  RoleEnum.Operator: return this.router.navigateByUrl('/operator/base');
                     }
                 }
             });

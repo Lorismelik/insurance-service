@@ -1,0 +1,35 @@
+<div class="create-request-popup">
+    <div class="centerify">
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Period</th>
+                <th>Client</th>
+                <th>Operator</th>
+                <th>Insurance Agent</th>
+                <th>Status</th>
+                <th>Data</th>
+                <th>Cost</th>
+            </tr>
+            <tr>
+                <td>{{request.date}}</td>
+                <td>{{request.period}}</td>
+                <td>{{client}}</td>
+                <td>{{operator}}</td>
+                <td>{{agent}}</td>
+                <td>{{request.status}}</td>
+                <td>{{request.data}}</td>
+                <td>{{request.cost}}</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div class="centerify">
+        <button (click)="approve()"><span>Approve</span></button>
+        <button (click)="decline()"><span>Decline</span></button>
+    </div>
+    <br>
+    <div class="centerify">
+        <button (click)="close()"><span>Save</span></button>
+    </div>
+</div>

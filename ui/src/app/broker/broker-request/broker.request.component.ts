@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ClientRequest} from '../../models';
 import {Router} from '@angular/router';
 import {StoreService} from '../../services/store.service';
-import {BrokerService} from '../../services/broker.service';
+import {AgentService} from '../../services/agent.service';
 
 @Component({
     templateUrl: './broker.request.component.html',
@@ -17,7 +17,7 @@ export class BrokerRequestComponent implements OnInit {
 
     constructor(private router: Router,
                 private storeService: StoreService,
-                private brokerService: BrokerService) {
+                private brokerService: AgentService) {
         this.brokerId = this.storeService.getId();
         this.clientRequestId = this.storeService.getPropertyId();
         this.brokerService.checkRequests(this.brokerId)

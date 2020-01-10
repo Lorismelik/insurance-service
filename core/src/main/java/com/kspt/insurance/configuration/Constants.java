@@ -4,7 +4,7 @@ public class Constants {
 
     public static final class Actor {
         public static final String OPERATOR = "operator";
-        public static final String INSURANCE_AGENT = "insuranceAgent";
+        public static final String INSURANCE_AGENT = "agent";
         public static final String CLIENT = "client";
     }
 

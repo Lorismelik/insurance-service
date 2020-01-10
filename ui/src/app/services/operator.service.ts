@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../core/enviroment';
 import {Operator, BankRecord, ClientRequest, Rate, Transaction} from '../models';
-import {Broker} from '../models';
+import {Agent} from '../models';
 import {CreateRequest} from '../models/requests/CreateRequest';
 import {UpdatePolisDataRequest} from '../models/requests/UpdateDataRequest';
 import {InsurancePaymentsRequest} from '../models/requests/InsurancePaymentsRequest';
@@ -62,7 +62,7 @@ export class OperatorService {
 
     getBrokers(adminId: number) {
         const url = this.urlWithOperatorId(environment.getAdminBrokers, adminId);
-        return this.http.get<Broker[]>(url);
+        return this.http.get<Agent[]>(url);
     }
 
     private urlWithOperatorId(urlWithoutId: string, operatorId: number): string {

@@ -1,17 +1,21 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {CreateRequest} from '../../models/requests/CreateRequest';
 import {UpdatePolisDataRequest} from '../../models/requests/UpdateDataRequest';
 import {InsurancePaymentsRequest} from '../../models/requests/InsurancePaymentsRequest';
 import {StoreService} from '../../services/store.service';
 import {OperatorService} from '../../services/operator.service';
 import {Router} from '@angular/router';
+import {CreateRequestPopup} from '../../request/create.request.popup';
 
 @Component({
     templateUrl: './operator.unparented.requests.component.html'
 })
 export class OperatorUnparentedRequestsComponent implements OnInit {
+    @ViewChild(CreateRequestPopup, {static: false}) private createRequestPopup: CreateRequestPopup;
+    private showCreateRequestPopup: boolean = false;
     protected operatorId: number;
     protected createRequests: CreateRequest[];
+    private createRequest: CreateRequest;
     protected updateDataRequests: UpdatePolisDataRequest[];
     protected insurancePaymentsRequests: InsurancePaymentsRequest[];
     constructor(private storeService: StoreService,
@@ -27,8 +31,12 @@ export class OperatorUnparentedRequestsComponent implements OnInit {
     }
 
     onCreateRequestClick(request: CreateRequest) {
-        this.storeService.setPropertyId(request.id);
-        return this.router.navigateByUrl(`/admin/request/${request.id}`);
+        this.createRequest = request;
+        this.showCreateRequestPopup = true;
+    }
+
+    onCloseCreateRequestPopup() {
+        this.showCreateRequestPopup = false;
     }
 
     onUpdateRequestClick(request: UpdatePolisDataRequest) {

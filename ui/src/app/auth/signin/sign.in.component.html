@@ -24,19 +24,6 @@
                required>
     </div>
     <div class="inner-form">
-        <label for="personType">Role</label>
-    </div>
-    <div class="inner-form">
-        <select class="select-css" [(ngModel)]="personType"
-                name="personType"
-                id="personType"
-                required="">
-            <option value="client">Client</option>
-            <option value="operator">Operator</option>
-            <option value="insuranceAgent">Insurance agent</option>
-        </select>
-    </div>
-    <div class="inner-form">
         <span><button (click)="signIn()"><span>Sign In</span></button></span>
         <span><button [routerLink]="''"><span>Back</span></button></span>
     </div>
