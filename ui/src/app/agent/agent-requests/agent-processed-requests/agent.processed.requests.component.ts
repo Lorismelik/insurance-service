@@ -1,11 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {AgentService} from '../../services/agent.service';
+import {AgentService} from '../../../services/agent.service';
+import {CreateRequest} from '../../../models/requests/CreateRequest';
+import {InsurancePaymentsRequest} from '../../../models/requests/InsurancePaymentsRequest';
 import {Router} from '@angular/router';
-import {StoreService} from '../../services/store.service';
-import {CreateRequestPopup} from '../../request/create.request.popup';
-import {CreateRequest} from '../../models/requests/CreateRequest';
-import {UpdatePolisDataRequest} from '../../models/requests/UpdateDataRequest';
-import {InsurancePaymentsRequest} from '../../models/requests/InsurancePaymentsRequest';
+import {StoreService} from '../../../services/store.service';
+import {CreateRequestPopup} from '../../../request/create.request.popup';
 
 @Component({
     templateUrl: './agent.processed.requests.component.html'

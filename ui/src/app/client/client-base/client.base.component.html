@@ -12,7 +12,7 @@
         <br>
         <div class="centerify">
             <button [class.disabled]="!client.passport"
-                    (click)="agreement()">
+                    [routerLink]="'/client/requests/closed'">
                 <span>Closed requests</span>
             </button>
 

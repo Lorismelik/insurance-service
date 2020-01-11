@@ -19,7 +19,7 @@ import {OperatorService} from './services/operator.service';
 import {AgentService} from './services/agent.service';
 import {AgentBaseComponent} from './agent/agent-base/agent.base.component';
 import {AgentInfoComponent} from './agent/agent-info/agent.info.component';
-import {AgentProcessedRequestsComponent} from './agent/agent-requests/agent.processed.requests.component';
+import {AgentProcessedRequestsComponent} from './agent/agent-requests/agent-processed-requests/agent.processed.requests.component';
 import {OperatorBaseComponent} from './operator/operator-base/operator.base.component';
 import {OperatorInfoComponent} from './operator/operator-info/operator.info.component';
 import {StoreService} from './services/store.service';
@@ -28,6 +28,9 @@ import {CreatePeriodPopup} from './client/client-period-popup/client.period.popu
 import {OperatorUnparentedRequestsComponent} from './operator/operator-requests/operator-unparanted-requests/operator.unparented.requests.component';
 import {OperatorProcessedRequestsComponent} from './operator/operator-requests/operator-processed-requests/operator.processed.requests.component';
 import {ClientProcessedRequestsComponent} from './client/client-requests/client-processed-requests/client.processed.requests.component';
+import {ClientClosedRequestsComponent} from './client/client-requests/client-closed-requests/client.closed.requests.component';
+import {AgentClosedRequestsComponent} from './agent/agent-requests/agent-closed-requests/agent.closed.requests.component';
+import {OperatorClosedRequestsComponent} from './operator/operator-requests/operator-closed-requests/operator.closed.requests.component';
 
 @NgModule({
     declarations: [
@@ -49,6 +52,9 @@ import {ClientProcessedRequestsComponent} from './client/client-requests/client-
         CreatePeriodPopup,
         OperatorProcessedRequestsComponent,
         ClientProcessedRequestsComponent,
+        ClientClosedRequestsComponent,
+        AgentClosedRequestsComponent,
+        OperatorClosedRequestsComponent
     ],
     imports: [
         CommonModule,
