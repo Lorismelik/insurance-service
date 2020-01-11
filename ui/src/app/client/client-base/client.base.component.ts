@@ -30,11 +30,6 @@ export class ClientBaseComponent implements OnInit {
     }
 
     brokerageAccount() {
-        if (this.client.brokerageAccount) {
-            this.router.navigateByUrl('/client/brokerageAccount/info');
-        } else {
-            this.router.navigateByUrl('/client/brokerageAccount');
-        }
     }
 
     agreement() {

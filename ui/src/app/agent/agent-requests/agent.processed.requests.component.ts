@@ -1,5 +1,4 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ClientRequest} from '../../models';
 import {AgentService} from '../../services/agent.service';
 import {Router} from '@angular/router';
 import {StoreService} from '../../services/store.service';
@@ -30,11 +29,6 @@ export class AgentProcessedRequestsComponent implements OnInit {
     ngOnInit() {
     }
 
-    onRequestClick(request: ClientRequest) {
-        this.storeService.setPropertyId(request.id);
-        return this.router.navigateByUrl(`/agent/request/${request.id}`);
-    }
-
     onCloseCreateRequestPopup() {
         this.showCreateRequestPopup = false;
         this.agentService.getCreatePolis(this.agentId).subscribe(data => this.createRequests = data, error => alert(error));
@@ -45,4 +39,6 @@ export class AgentProcessedRequestsComponent implements OnInit {
         this.createRequest = request;
         this.showCreateRequestPopup = true;
     }
+
+    onInsurancePaymentRequestClick(request: InsurancePaymentsRequest) {}
 }

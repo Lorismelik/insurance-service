@@ -17,12 +17,12 @@
                 <td>{{request.period}}</td>
                 <td>{{client}}</td>
                 <td>{{operator}}</td>
-                <td *ngIf="request.status === 'created'">
+                <td *ngIf="request.status === 'created' && role === 1">
                     <select class="inner-select" [(ngModel)]="selectedAgent" name="selectedAgent" id="selectedAgent">
                         <option *ngFor="let insuranceAgent of agents" value="{{insuranceAgent.id}}">{{insuranceAgent.name}}</option>
                     </select>
                 </td>
-                <td *ngIf="request.status !== 'created'">
+                <td *ngIf="request.status !== 'created' || role !== 1">
                     {{agent}}
                 </td>
                 <td>{{request.status}}</td>
@@ -47,7 +47,8 @@
     </div>
     <br>
     <div class="centerify">
-        <button *ngIf="request.status === 'created' || request.status === 'processed'" (click)="save()"><span>Save</span></button>
+        <button *ngIf="(request.status === 'created' && role === 1) ||
+         (request.status === 'processed' && role === 2)" (click)="save()"><span>Save</span></button>
         <button *ngIf="request.status === 'approved' && role === 0" (click)="pay()"><span>Pay for policy</span></button>
         <button  (click)="close()"><span>Close</span></button>
     </div>

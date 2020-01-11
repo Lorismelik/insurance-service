@@ -50,12 +50,10 @@ export class ClientProcessedRequestsComponent implements OnInit {
     }
 
     getRequest() {
-        this.clientService.getCreatePolis(this.clientId).subscribe(data => this.createRequests = data.filter(x => x.status !== 'created' &&
-            x.status !== 'declined' &&
+        this.clientService.getCreatePolis(this.clientId).subscribe(data => this.createRequests = data.filter(x => x.status !== 'declined' &&
             x.status !== 'completed')
             , error => alert("Error is occured"));
-        this.clientService.getInsurancePayments(this.clientId).subscribe(data => this.insurancePaymentsRequests = data.filter(x => x.status !== 'created' &&
-            x.status !== 'declined' &&
+        this.clientService.getInsurancePayments(this.clientId).subscribe(data => this.insurancePaymentsRequests = data.filter(x => x.status !== 'declined' &&
             x.status !== 'completed'), error => alert("Error is occured"));
         this.clientService.getUpdateData(this.clientId).subscribe(data => this.updateDataRequests = data.filter(x => x.status !== 'declined' &&
             x.status !== 'completed'), error => alert("Error is occured"));

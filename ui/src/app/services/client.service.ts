@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../core/enviroment';
-import {Polis, BrokerageAccount, Client, ClientRequest, Operator, Transaction} from '../models';
+import {Polis, Client, Operator} from '../models';
 import {CreateRequest} from '../models/requests/CreateRequest';
 import {InsurancePaymentsRequest} from '../models/requests/InsurancePaymentsRequest';
 import {UpdatePolisDataRequest} from '../models/requests/UpdateDataRequest';
@@ -59,58 +59,7 @@ export class ClientService {
         return this.http.post<Polis>(url, {requestId});
     }
 
-    closeBrokerageAccount(clientId: number) {
-        const url = this.urlWithClientId(environment.closeBrokerageAccount, clientId);
-        return this.http.post<boolean>(url, {});
-    }
-
-    putMoneyToAccount(clientId: number, money: number, currency: string) {
-        const url = this.urlWithClientId(environment.putMoneyToAccount, clientId);
-        return this.http.post<boolean>(url, {money, currency});
-    }
-
-    breakBrokerAgreement(clientId: number) {
-        const url = this.urlWithClientId(environment.breakBrokerAgreement, clientId);
-        return this.http.post<boolean>(url, {});
-    }
-
-    exchangeMoneyForStocks(clientId: number, quantity: number, fromType: string, toType: string) {
-        const url = this.urlWithClientId(environment.exchangeMoneyToStocks, clientId);
-        return this.http.post<ClientRequest>(url, {quantity, fromType, toType});
-    }
-
-    exchangeStocksToMoney(clientId: number, quantity: number, fromType: string, toType: string) {
-        const url = this.urlWithClientId(environment.exchangeStocksToMoney, clientId);
-        return this.http.post<ClientRequest>(url, {quantity, fromType, toType});
-    }
-
-    getTransactions(clientId: number) {
-        const url = this.urlWithClientId(environment.getClientTransactions, clientId);
-        return this.http.get<Transaction[]>(url);
-    }
-
-    getTransactionById(clientId: number, transactionId: number) {
-        const url = this.urlWithClientIdAndPropertyId(environment.getClientTransactionById, clientId, transactionId);
-        return this.http.get<Transaction>(url);
-    }
-
-    getRequests(clientId: number) {
-        const url = this.urlWithClientId(environment.getClientRequests, clientId);
-        return this.http.get<ClientRequest[]>(url);
-    }
-
-    getRequestById(clientId: number, requestId: number) {
-        const url = this.urlWithClientIdAndPropertyId(environment.getClientRequestById, clientId, requestId);
-        return this.http.get<ClientRequest>(url);
-    }
-
     private urlWithClientId(urlWithoutId: string, clientId: number): string {
         return urlWithoutId.replace(':clientId', `${clientId}`);
-    }
-
-    private urlWithClientIdAndPropertyId(urlWithoutId: string, clientId: number, id: number): string {
-        return urlWithoutId
-            .replace(':clientId', `${clientId}`)
-            .replace(':id', `${id}`);
     }
 }
