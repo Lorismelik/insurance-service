@@ -18,7 +18,7 @@ export class OperatorInfoComponent implements OnInit {
         this.operatorId = this.storeService.getId();
         this.operatorService.getById(this.operatorId).subscribe(data => {
             this.operator = data;
-            this.wallet = data.account;
+            this.wallet = data.bank;
         });
     }
 
@@ -26,6 +26,6 @@ export class OperatorInfoComponent implements OnInit {
     }
 
     onUpdateClick(sum: number) {
-        return this.operatorService.updateWallet(sum, this.operatorId).subscribe(res => this.wallet = res.account);
+        return this.operatorService.updateWallet(this.operatorId, sum).subscribe(res => this.wallet = res.bank, error => alert(error));
     }
 }

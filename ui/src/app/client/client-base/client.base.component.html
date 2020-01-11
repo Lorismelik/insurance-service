@@ -3,35 +3,25 @@
 <div class="client-base-container">
     <div *ngIf="client" class="buttons">
         <div class="centerify">
-            <button [routerLink]="'/client/info'"><span>Client information</span></button>
+            <button [routerLink]="'/client/info'"><span>Profile</span></button>
             <button [class.disabled]="!client.passport"
                     (click)="brokerageAccount()">
-                <span>Brokerage account</span>
+                <span>Insurance polis</span>
             </button>
         </div>
         <br>
         <div class="centerify">
-            <button [class.disabled]="!client.brokerageAccount"
+            <button [class.disabled]="!client.passport"
                     (click)="agreement()">
-                <span>Agreement</span>
+                <span>Closed requests</span>
             </button>
 
-            <button [class.disabled]="!client.agreement"
-                    [routerLink]="'/client/exchange'">
-                <span>Exchange</span>
+            <button [class.disabled]="!client.passport"
+                    [routerLink]="'/client/requests/processed'">
+                <span>Processed requests</span>
             </button>
         </div>
         <br>
-        <div class="centerify">
-            <button [class.disabled]="!client.agreement"
-                    [routerLink]="'/client/requests'">
-                <span>Requests</span>
-            </button>
-            <button [class.disabled]="!client.agreement"
-                    [routerLink]="'/client/transactions'">
-                <span>Completed transactions</span>
-            </button>
-        </div>
         <br>
         <div class="centerify">
             <button (click)="signOut()"><span>Sign out</span></button>

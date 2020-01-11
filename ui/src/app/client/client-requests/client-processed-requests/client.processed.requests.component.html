@@ -1,27 +1,23 @@
-<h2>Unparented requests</h2>
+<h2>Processed requests</h2>
 
-<div  class="operator-unparented-requests-container">
-    <div *ngIf="createRequests">
+<div>
+    <div *ngIf="createRequests" class = "create-requests-container">
+        <create-request-popup *ngIf="showCreateRequestPopup"
+                              [request]="createRequest"
+                              [role]="this.storeService.getRole()"
+                              (onCloseEvent)="onCloseCreateRequestPopup()"> </create-request-popup>
         <h2>Create polis requests</h2>
         <div class="centerify">
             <table>
                 <tr>
                     <th>Id</th>
-                    <th>Date</th>
-                    <th>Period</th>
                     <th>Status</th>
-                    <th>Data</th>
-                    <th>Cost</th>
                     <th>Client</th>
                 </tr>
                 <tr *ngFor="let request of createRequests"
                     (click)="onCreateRequestClick(request)">
                     <td>{{request.id}}</td>
-                    <td>{{request.date}}</td>
-                    <td>{{request.period}}</td>
                     <td>{{request.status}}</td>
-                    <td>{{request.data}}</td>
-                    <td>{{request.cost}}</td>
                     <td>{{request.clientId}}</td>
                 </tr>
             </table>
@@ -29,60 +25,49 @@
     </div>
     <br>
     <div *ngIf="updateDataRequests">
-        <h2>Update polis data requests</h2>
+        <h2>Update data requests</h2>
         <div class="centerify">
             <table>
                 <tr>
                     <th>Id</th>
+                    <th>Insurance polis</th>
                     <th>Status</th>
-                    <th>New data</th>
-                    <th>Client</th>
                 </tr>
                 <tr *ngFor="let request of updateDataRequests"
-                    (click)="onUpdateRequestClick(request)">
+                    (click)="onInsurancePaymentRequestClick(request)">
                     <td>{{request.id}}</td>
+                    <td>{{request.insurancePolisId}}</td>
                     <td>{{request.status}}</td>
-                    <td>{{request.newData}}</td>
-                    <td>{{request.clientId}}</td>
                 </tr>
             </table>
         </div>
     </div>
     <br>
     <div *ngIf="insurancePaymentsRequests">
-        <h2>Update polis data requests</h2>
+        <h2>Get insurance payments requests</h2>
         <div class="centerify">
             <table>
                 <tr>
                     <th>Id</th>
                     <th>Insurance polis</th>
-                    <th>Agent review</th>
-                    <th>Client</th>
-                    <th>Additional data</th>
-                    <th>Payments</th>
-                    <th>Date</th>
+                    <th>Operator</th>
+                    <th>Agent</th>
                     <th>Status</th>
                 </tr>
                 <tr *ngFor="let request of insurancePaymentsRequests"
                     (click)="onInsurancePaymentRequestClick(request)">
                     <td>{{request.id}}</td>
                     <td>{{request.insurancePolisId}}</td>
-                    <td>{{request.review}}</td>
-                    <td>{{request.clientId}}</td>
-                    <td>{{request.additionalData}}</td>
-                    <td>{{request.payments}}</td>
-                    <td>{{request.date}}</td>
+                    <td>{{request.operatorId}}</td>
+                    <td>{{request.insuranceAgentId}}</td>
                     <td>{{request.status}}</td>
                 </tr>
             </table>
         </div>
     </div>
     <br>
-    <create-request-popup *ngIf="showCreateRequestPopup"
-                          [request]="createRequest"
-                          [role]="this.storeService.getRole()"
-                          (onCloseEvent)="onCloseCreateRequestPopup()"> </create-request-popup>
     <div class="centerify">
-        <button [routerLink]="'/operator/base'"><span>Back</span></button>
+        <button *ngIf="!showCreateRequestPopup"
+                [routerLink]="'/client/base'"><span>Back</span></button>
     </div>
 </div>

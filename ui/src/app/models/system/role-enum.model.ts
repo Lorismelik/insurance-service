@@ -1,4 +1,4 @@
-enum RoleEnum {
+export enum RoleEnumModel {
     Client,
     Operator,
     InsuranceAgent

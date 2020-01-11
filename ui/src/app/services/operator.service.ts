@@ -21,12 +21,12 @@ export class OperatorService {
     }
 
     checkUnresolvedUpdateDataRequests(operatorId: number) {
-        const url = this.urlWithOperatorId(environment.checkUnparentedCreateRequests, operatorId);
+        const url = this.urlWithOperatorId(environment.checkUnresolvedUpdateDataRequests, operatorId);
         return this.http.get<UpdatePolisDataRequest[]>(url);
     }
 
     checkUnresolvedGetInsurancePaymentsRequests(operatorId: number) {
-        const url = this.urlWithOperatorId(environment.checkUnparentedCreateRequests, operatorId);
+        const url = this.urlWithOperatorId(environment.checkUnresolvedGetInsurancePaymentsRequests, operatorId);
         return this.http.get<InsurancePaymentsRequest[]>(url);
     }
 
@@ -35,9 +35,29 @@ export class OperatorService {
         return this.http.get<Operator>(url);
     }
 
-    approveRequest(adminId: number, clientRequestId: number) {
-        const url = this.urlWithOperatorId(environment.approveRequest, adminId);
-        return this.http.post<Transaction>(url, {clientRequestId});
+    delegateCreateRequest(operatorId: number, agentId: string, requestId: number) {
+        const url = this.urlWithOperatorId(environment.delegateCreateRequest, operatorId);
+        return this.http.post<CreateRequest>(url, {agentId, requestId});
+    }
+
+    getCreateRequests(operatorId: number) {
+        const url = this.urlWithOperatorId(environment.getCreateRequestsOperator, operatorId);
+        return this.http.get<CreateRequest[]>(url);
+    }
+
+    getUpdateDataRequests(operatorId: number) {
+        const url = this.urlWithOperatorId(environment.getUpdateDataOperator, operatorId);
+        return this.http.get<UpdatePolisDataRequest[]>(url);
+    }
+
+    getInsurancePaymentsRequests(operatorId: number) {
+        const url = this.urlWithOperatorId(environment.getInsurancePaymentsOperator, operatorId);
+        return this.http.get<InsurancePaymentsRequest[]>(url);
+    }
+
+    approveCreateRequest(operatorId: number, requestId: number, cost: number, approved: boolean) {
+        const url = this.urlWithOperatorId(environment.approveCreateRequest, operatorId);
+        return this.http.post<CreateRequest>(url, {requestId, cost, approved});
     }
 
     declineRequest(clientRequestId: number) {

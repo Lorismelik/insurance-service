@@ -1,9 +1,9 @@
 import {Person} from './person.model';
-import {Agreement, BrokerageAccount, ClientRequest, Passport, Transaction} from '..';
+import {BrokerageAccount, ClientRequest, Passport, Transaction} from '..';
 
 export interface Client extends Person {
     passport: Passport;
-    agreement: Agreement;
+    wallet: number;
     requests: ClientRequest[];
     transactions: Transaction[];
     brokerageAccount: BrokerageAccount;

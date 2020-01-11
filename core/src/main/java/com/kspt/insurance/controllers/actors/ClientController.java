@@ -95,4 +95,9 @@ public final class ClientController extends CrudController<Client, ClientService
     public List<ClosePolisRequest> getClosePolis(@PathVariable final Long clientId) {
         return service.getClosePolisRequestById(clientId);
     }
+
+    @GetMapping("{clientId}/getPolis")
+    public List<InsurancePolis> getPolis(@PathVariable final Long clientId) {
+        return service.getPolis(clientId);
+    }
 }

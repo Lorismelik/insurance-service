@@ -1,6 +1,4 @@
-import {Agreement, Person} from '..';
+import {Person} from '..';
 
 export interface Agent extends Person {
-    adminId: number;
-    agreements: Agreement[];
 }

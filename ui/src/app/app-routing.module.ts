@@ -6,7 +6,7 @@ import {ClientBaseComponent} from "./client/client-base/client.base.component";
 import {ClientInfoComponent} from "./client/client-info/client.info.component";
 import {HomeComponent} from "./home/home.component";
 import {ClientPassportComponent} from "./client/client-passport/client.passport.component";
-import {ClientBrokerageAccountComponent} from "./client/client-brokerage-account/client.brokerage.account.component";
+import {ClientInsurancePolisComponent} from "./client/client-insurance-polis/client.insurance.polis.component";
 import {ClientBrokerageAccountInfoComponent} from "./client/client-brokerage-account-info/client.brokerage.account.info.component";
 import {ClientAgreementComponent} from "./client/client-argreement/client.agreement.component";
 import {ClientAgreementInfoComponent} from "./client/client-agreement-info/client.agreement.info.component";
@@ -23,18 +23,20 @@ import {ClientAssetsComponent} from "./client/client-assets/client.assets.compon
 import {ClientAssetComponent} from "./client/client-asset/client.asset.component";
 import {ClientStocksComponent} from "./client/client-stocks/client.stocks.component";
 import {ClientStockComponent} from "./client/client-stock/client.stock.component";
-import {BrokerBaseComponent} from "./broker/broker-base/broker.base.component";
-import {BrokerInfoComponent} from "./broker/broker-info/broker.info.component";
-import {BrokerRequestsComponent} from "./broker/broker-requests/broker.requests.component";
-import {BrokerRequestComponent} from "./broker/broker-request/broker.request.component";
-import {BrokerAgreementsComponent} from "./broker/broker-agreements/broker.agreements.component";
-import {BrokerAgreementComponent} from "./broker/broker-agreement/broker.agreement.component";
+import {AgentBaseComponent} from "./agent/agent-base/agent.base.component";
+import {AgentInfoComponent} from "./agent/agent-info/agent.info.component";
+import {AgentProcessedRequestsComponent} from "./agent/agent-requests/agent.processed.requests.component";
+import {BrokerRequestComponent} from "./agent/broker-request/broker.request.component";
+import {BrokerAgreementsComponent} from "./agent/broker-agreements/broker.agreements.component";
+import {BrokerAgreementComponent} from "./agent/broker-agreement/broker.agreement.component";
 import {OperatorBaseComponent} from "./operator/operator-base/operator.base.component";
 import {OperatorInfoComponent} from "./operator/operator-info/operator.info.component";
 import {AdminBrokersComponent} from "./operator/admin-brokers/admin.brokers.component";
-import {OperatorUnparentedRequestsComponent} from "./operator/operator-requests/operator.unparented.requests.component";
+import {OperatorUnparentedRequestsComponent} from "./operator/operator-requests/operator-unparanted-requests/operator.unparented.requests.component";
 import {AdminRatesComponent} from "./operator/admin-rates/admin.rates.component";
 import {AdminBankComponent} from "./operator/admin-bank/admin.bank.component";
+import {OperatorProcessedRequestsComponent} from './operator/operator-requests/operator-processed-requests/operator.processed.requests.component';
+import {ClientProcessedRequestsComponent} from './client/client-requests/client-processed-requests/client.processed.requests.component';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -43,7 +45,7 @@ const routes: Routes = [
     {path: 'client/base', component: ClientBaseComponent},
     {path: 'client/info', component: ClientInfoComponent},
     {path: 'client/passport', component: ClientPassportComponent},
-    {path: 'client/brokerageAccount', component: ClientBrokerageAccountComponent},
+    {path: 'client/brokerageAccount', component: ClientInsurancePolisComponent},
     {path: 'client/brokerageAccount/info', component: ClientBrokerageAccountInfoComponent},
     {path: 'client/agreement', component: ClientAgreementComponent},
     {path: 'client/agreement/info', component: ClientAgreementInfoComponent},
@@ -52,7 +54,7 @@ const routes: Routes = [
     {path: 'client/exchange', component: ClientExchangeComponent},
     {path: 'client/exchange/moneyToStocks', component: ClientExchangeMoneyToStocksComponent},
     {path: 'client/exchange/stocksToMoney', component: ClientExchangeStocksToMoneyComponent},
-    {path: 'client/requests', component: ClientRequestsComponent},
+    {path: 'client/requests/processed', component: ClientProcessedRequestsComponent},
     {path: 'client/request/:id', component: ClientRequestComponent},
     {path: 'client/transactions', component: ClientTransactionsComponent},
     {path: 'client/transaction/:id', component: ClientTransactionComponent},
@@ -60,16 +62,17 @@ const routes: Routes = [
     {path: 'client/asset/:id', component: ClientAssetComponent},
     {path: 'client/stocks', component: ClientStocksComponent},
     {path: 'client/stock/:id', component: ClientStockComponent},
-    {path: 'broker/base', component: BrokerBaseComponent},
-    {path: 'broker/info', component: BrokerInfoComponent},
-    {path: 'broker/requests', component: BrokerRequestsComponent},
-    {path: 'broker/request/:id', component: BrokerRequestComponent},
-    {path: 'broker/agreements', component: BrokerAgreementsComponent},
-    {path: 'broker/agreement/:id', component: BrokerAgreementComponent},
+    {path: 'agent/base', component: AgentBaseComponent},
+    {path: 'agent/info', component: AgentInfoComponent},
+    {path: 'agent/requests/processed', component: AgentProcessedRequestsComponent},
+    {path: 'agent/request/:id', component: BrokerRequestComponent},
+    {path: 'agent/agreements', component: BrokerAgreementsComponent},
+    {path: 'agent/agreement/:id', component: BrokerAgreementComponent},
     {path: 'operator/base', component: OperatorBaseComponent},
     {path: 'operator/info', component: OperatorInfoComponent},
     {path: 'operator/brokers', component: AdminBrokersComponent},
     {path: 'operator/requests/opened', component: OperatorUnparentedRequestsComponent},
+    {path: 'operator/requests/processed', component: OperatorProcessedRequestsComponent},
     {path: 'operator/rates', component: AdminRatesComponent},
     {path: 'operator/bank', component: AdminBankComponent},
 ];

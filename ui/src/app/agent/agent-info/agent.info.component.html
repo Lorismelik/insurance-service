@@ -1,0 +1,20 @@
+<h2>Agent information</h2>
+
+<div *ngIf="agent" class="agent-info-container">
+    <div class="centerify">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Person type</th>
+            </tr>
+            <tr>
+                <td>{{agent.name}}</td>
+                <td>{{agent.personType}}</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div class="centerify">
+        <button [routerLink]="'/agent/base'"><span>Back</span></button>
+    </div>
+</div>

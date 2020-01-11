@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {Agreement} from '../../models';
 import {ClientService} from '../../services/client.service';
 import {StoreService} from '../../services/store.service';
 
@@ -10,13 +9,12 @@ import {StoreService} from '../../services/store.service';
 })
 export class ClientAgreementInfoComponent implements OnInit {
     private id: number;
-    private agreement: Agreement;
 
     constructor(private router: Router,
                 private storeService: StoreService,
                 private clientService: ClientService) {
         this.id = this.storeService.getId();
-        this.clientService.getById(this.id).subscribe(data => this.agreement = data.agreement);
+        this.clientService.getById(this.id);
     }
 
     ngOnInit() {

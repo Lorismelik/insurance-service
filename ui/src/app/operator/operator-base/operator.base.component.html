@@ -1,14 +1,14 @@
-<h2>Admin</h2>
+<h2>Operator</h2>
 
 <div *ngIf="adminId" class="admin-base-container">
     <div class="centerify">
-        <button [routerLink]="'/operator/info'"><span>Operator information</span></button>
+        <button [routerLink]="'/operator/info'"><span>Profile</span></button>
     </div>
     <br>
     <div class="centerify">
         <button [routerLink]="'/operator/brokers'"><span>Closed requests</span></button>
         <button [routerLink]="'/operator/requests/opened'"><span>Opened requests</span></button>
-        <button [routerLink]="'/operator/requests'"><span>Processed requests</span></button>
+        <button [routerLink]="'/operator/requests/processed'"><span>Processed requests</span></button>
     </div>
     <br>
     <div class="centerify">

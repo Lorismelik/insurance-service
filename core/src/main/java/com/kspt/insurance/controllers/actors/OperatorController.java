@@ -50,10 +50,6 @@ public final class OperatorController extends CrudController<Operator, OperatorS
         return service.getUnresolvedInsurancePaymentsRequests(operatorId);
     }
 
-    @GetMapping("{operatorId}/getCreateRequestsById")
-    public List<CreatePolisRequest> getCreateRequestsById(@PathVariable final Long operatorId) {
-        return service.getCreateRequestsByOperator(operatorId);
-    }
     // requestId, approved, cost
     @PostMapping("{operatorId}/approveCreate")
     public CreatePolisRequest makeDecisionForCreateRequest(@PathVariable final Long operatorId,

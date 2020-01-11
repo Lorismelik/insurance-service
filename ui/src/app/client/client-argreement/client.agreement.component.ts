@@ -22,13 +22,6 @@ export class ClientAgreementComponent implements OnInit {
     }
 
     makeBrokerAgreement() {
-        if (this.validity) {
-            this.clientService.makeBrokerAgreement(this.id, this.validity).subscribe(
-                () => this.router.navigateByUrl('/client/agreement/info')
-            );
-        } else {
-            alert('Enter agreement validity please');
-        }
     }
 
     getClient() {

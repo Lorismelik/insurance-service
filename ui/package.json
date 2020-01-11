@@ -1,8 +1,8 @@
 {
-  "name": "exchange-trading",
+  "name": "insurance_service",
   "version": "1.0.0",
-  "description": "exchange-trading frontend",
-  "author": "Mikhail Medvedev",
+  "description": "insurance service frontend",
+  "author": "Lorismelik",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

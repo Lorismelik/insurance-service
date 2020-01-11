@@ -1,0 +1,16 @@
+<h2>Agent</h2>
+
+<div class="broker-common-container">
+    <div class="centerify">
+        <button [routerLink]="'/agent/info'"><span>Profile</span></button>
+    </div>
+    <br>
+    <div class="centerify">
+        <button [routerLink]="'/agent/requests/closed'"><span>Closed requests</span></button>
+        <button [routerLink]="'/agent/requests/processed'"><span>Processed requests</span></button>
+    </div>
+    <br>
+    <div class="centerify">
+        <button [routerLink]="''" (click)="signOut()"><span>Sign out</span></button>
+    </div>
+</div>

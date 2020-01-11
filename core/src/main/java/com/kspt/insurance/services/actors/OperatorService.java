@@ -131,6 +131,18 @@ public class OperatorService extends CrudService<Operator, OperatorRepository> {
         return createPolisRequestRepository.findByOperatorId(id);
     }
 
+    public List<UpdatePolisDataRequest> getUpdateRequestsByOperator(Long id) {
+        Operator operator = repository.findById(id).orElse(null);
+        if (operator == null || !operator.getIsAuthenticated()) return null;
+        return updatePolisDataRequestRepository.findByOperatorId(id);
+    }
+
+    public List<InsurancePaymentsRequest> getInsurancePaymentsRequestsByOperator(Long id) {
+        Operator operator = repository.findById(id).orElse(null);
+        if (operator == null || !operator.getIsAuthenticated()) return null;
+        return insurancePaymentsRequestRepository.findByOperatorId(id);
+    }
+
     public List<UpdatePolisDataRequest> getUnresolvedUpdateRequests(Long id) {
         Operator operator = repository.findById(id).orElse(null);
         if (operator == null || !operator.getIsAuthenticated()) return null;

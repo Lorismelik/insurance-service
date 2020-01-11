@@ -20,6 +20,6 @@ export class OperatorBaseComponent implements OnInit {
 
     signOut() {
         this.authService.signOut(this.adminId, 'operator')
-            .subscribe(() =>  this.router.navigateByUrl('/'));
+            .subscribe(() =>  this.router.navigateByUrl('/'), error => alert(error));
     }
 }

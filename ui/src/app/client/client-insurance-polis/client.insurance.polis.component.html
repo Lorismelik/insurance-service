@@ -1,0 +1,32 @@
+<h2>Insurance polis</h2>
+
+<div>
+    <div *ngIf="!polises" class="centerify">Now you don't have an insurance polis</div>
+    <div *ngIf="polises">
+        <h2>Insurance policies</h2>
+        <div class="centerify">
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Period</th>
+                    <th>Status</th>
+                </tr>
+                <tr *ngFor="let polis of polises">
+                    <td>{{polis.id}}</td>
+                    <td>{{polis.period}}</td>
+                    <td>{{polis.status}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <button (click)="createPolis()"><span>Create polis</span></button>
+    </div>
+
+    <div class="centerify">
+        <button [routerLink]="'/client/base'"><span>Back</span></button>
+    </div>
+
+    <client-period-popup *ngIf="showCreateRequestPopup"
+                          (onCloseEvent)="onCloseCreatePolisPopup()"> </client-period-popup>
+</div>

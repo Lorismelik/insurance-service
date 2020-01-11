@@ -1,0 +1,18 @@
+<div class="request-popup">
+    <div class="request-popup-content">
+        <h2>Choose duration for insurance</h2>
+        <div class="centerify">
+            <label for="period">Duration</label>
+            <select class="select-css" [(ngModel)]="period" name="period" id="period" style="width: 150px">
+                <option value="3 year"> 3 year</option>
+                <option value="2 year"> 2 year</option>
+                <option value="1 year"> 1 year</option>
+                <option value="half year"> half year</option>
+            </select>
+        </div>
+        <div class="centerify">
+            <button class="popup-button" (click)="save()"><span>Save</span></button>
+            <button  class="popup-button" (click)="close()"><span>Close</span></button>
+        </div>
+    </div>
+</div>

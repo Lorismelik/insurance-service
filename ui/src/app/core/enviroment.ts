@@ -24,14 +24,11 @@ export function createEnv() {
         getClientRequestById: clientPrefix + ':clientId/request/:id',
 
         checkBrokerRequests: agentPrefix + ':brokerId/checkRequests',
-        validateClientRequest: agentPrefix + ':brokerId/validateClientRequest',
-        approveClientRequest: agentPrefix + ':brokerId/approveClientRequest',
         declineClientRequest: agentPrefix + ':brokerId/declineClientRequest',
 
         getOperator: operatorPrefix,
         getOperatorById: operatorPrefix + 'get/:operatorId',
         getAdminBrokers: operatorPrefix + ':adminId/getBrokers',
-        approveRequest: operatorPrefix + ':adminId/approveRequest',
         declineRequest: operatorPrefix + 'declineRequest/:clientRequestId',
         getRates: operatorPrefix + 'getRates',
         getBankAssets: operatorPrefix + 'getBankAssets',
@@ -43,10 +40,27 @@ export function createEnv() {
         checkUnparentedCreateRequests: operatorPrefix + ':operatorId/checkUnresolvedCreate',
         checkUnresolvedUpdateDataRequests: operatorPrefix + ':operatorId/checkUnresolvedUpdateData',
         checkUnresolvedGetInsurancePaymentsRequests: operatorPrefix + ':operatorId/checkUnresolvedGetInsurancePayments',
+        getCreateRequestsOperator: operatorPrefix + ':operatorId/getCreatePolis',
+        getInsurancePaymentsOperator: operatorPrefix + ':operatorId/getInsurancePayments',
+        getUpdateDataOperator: operatorPrefix + ':operatorId/getUpdateData',
+        delegateCreateRequest: operatorPrefix + ':operatorId/delegateCreate',
+        approveCreateRequest: operatorPrefix + ':operatorId/approveCreate',
 
         getAgent: agentPrefix,
         getAgentById: agentPrefix + 'get/:agentId',
-        getAllAgents: agentPrefix + 'getAll'
+        getAllAgents: agentPrefix + 'getAll',
+        getInsurancePaymentsAgent : agentPrefix + ':agentId/getInsurancePayments',
+        getCreatePolisAgent: agentPrefix + ':agentId/getCreatePolis',
+        processCreateRequest: agentPrefix + ':agentId/processCreateRequest',
+
+        getClient: clientPrefix,
+        getPolis: clientPrefix + ':clientId/getPolis',
+        createRequestForPolis: clientPrefix + ':clientId/createPolis',
+        getCreatePolisClient: clientPrefix + ':clientId/getCreatePolis',
+        getUpdateDataClient: clientPrefix + ':clientId/getUpdateData',
+        getInsurancePaymentsClient: clientPrefix + ':clientId/getInsurancePayments',
+        getClosePolisClient: clientPrefix + ':clientId/getClosePolis',
+        payForPolis: clientPrefix + ':clientId/payForPolis'
     };
 }
 

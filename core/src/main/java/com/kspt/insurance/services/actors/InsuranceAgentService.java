@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class InsuranceAgentService extends CrudService<InsuranceAgent, InsuranceAgentRepository> {
@@ -34,11 +35,15 @@ public class InsuranceAgentService extends CrudService<InsuranceAgent, Insurance
     }
 
     public List<CreatePolisRequest> getCreatePolisRequestById(@NotNull final Long agentId) {
-        return  createPolisRequestRepository.findByInsuranceAgentId(agentId);
+        return  createPolisRequestRepository.findByInsuranceAgentId(agentId).stream().filter(x ->
+                !x.getStatus().equals(Constants.InsurancePaymentsStatus.DECLINED) &&  !x.getStatus().equals(Constants.InsurancePaymentsStatus.COMPLETED))
+                .collect(Collectors.toList());
     }
 
     public List<InsurancePaymentsRequest> getInsurancePaymentsRequestById(@NotNull final Long agentId) {
-        return  insurancePaymentsRequestRepository.findByInsuranceAgentId(agentId);
+        return  insurancePaymentsRequestRepository.findByInsuranceAgentId(agentId).stream().filter(x ->
+                !x.getStatus().equals(Constants.InsurancePaymentsStatus.DECLINED) &&  !x.getStatus().equals(Constants.InsurancePaymentsStatus.COMPLETED))
+                .collect(Collectors.toList());
     }
 
     public CreatePolisRequest processCreatePolisRequest(@NotNull final Long agentId,
@@ -67,7 +72,7 @@ public class InsuranceAgentService extends CrudService<InsuranceAgent, Insurance
         Integer payments = Integer.parseInt(data.get("payments"));
         insurancePaymentsRequest.setReview(review);
         insurancePaymentsRequest.setPayments(payments);
-        insurancePaymentsRequest.setStatus(Constants.CreatePolisStatus.WAITING_FOR_APPROVE);
+        insurancePaymentsRequest.setStatus(Constants.InsurancePaymentsStatus.WAITING_FOR_APPROVE);
         return insurancePaymentsRequestRepository.save(insurancePaymentsRequest);
     }
 }

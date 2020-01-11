@@ -2,7 +2,7 @@ import {Entity} from '../entity.model';
 
 
 export class CreateRequest extends Entity {
-    date: Date;
+    startdate: Date;
     period: string;
     operatorId: number;
     insuranceAgentId: number;

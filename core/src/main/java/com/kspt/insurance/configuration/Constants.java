@@ -32,7 +32,7 @@ public class Constants {
 
     public static final class InsurancePaymentsStatus {
         public static final String DECLINED = "declined";
-        public static final String COMPLETED = "approved";
+        public static final String COMPLETED = "completed";
         public static final String CREATED = "created";
         public static final String PROCESSED = "processed";
         public static final String WAITING_FOR_APPROVE = "waiting for approve";

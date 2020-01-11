@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {StoreService} from '../../services/store.service';
+import {RoleEnumModel} from '../../models';
 
 @Component({
     templateUrl: './sign.in.component.html',
@@ -32,11 +33,11 @@ export class SignInComponent implements OnInit {
                     this.storeService.setId(data.id);
                     this.storeService.setRole(data.personType);
                     switch (this.storeService.getRole()) {
-                        case RoleEnum.Client: return this.router.navigateByUrl('/client/base');
-                        case  RoleEnum.InsuranceAgent: return this.router.navigateByUrl('/insuranceAgent/base');
-                        case  RoleEnum.Operator: return this.router.navigateByUrl('/operator/base');
+                        case RoleEnumModel.Client: return this.router.navigateByUrl('/client/base');
+                        case  RoleEnumModel.InsuranceAgent: return this.router.navigateByUrl('/agent/base');
+                        case  RoleEnumModel.Operator: return this.router.navigateByUrl('/operator/base');
                     }
                 }
-            });
+            }, error => alert(error));
     }
 }

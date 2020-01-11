@@ -7,12 +7,12 @@
             <table>
                 <tr>
                     <th>Name</th>
-                    <th>Surname</th>
+                    <th>Wallet</th>
                     <th>Person type</th>
                 </tr>
                 <tr>
                     <td>{{client.name}}</td>
-                    <td>{{client.surname}}</td>
+                    <td>{{wallet}}
                     <td>{{client.personType}}</td>
                 </tr>
             </table>
@@ -36,6 +36,21 @@
                     </tr>
                 </table>
             </div>
+        </div>
+        <br>
+        <div class="centerify">
+            <label for="account">Update wallet</label>
+            <input [(ngModel)]="account"
+                   type="account"
+                   placeholder="0"
+                   name="account"
+                   id="account">
+        </div>
+        <br>
+        <div class="centerify">
+            <button (click)="onUpdateClick(account)">
+                <span>Update wallet</span>
+            </button>
         </div>
         <br>
         <div class="centerify">

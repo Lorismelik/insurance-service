@@ -28,23 +28,23 @@ export class BrokerRequestComponent implements OnInit {
     }
 
     validate() {
-        this.brokerService.validateClientRequest(this.brokerId, this.clientRequestId)
+/*        this.brokerService.validateClientRequest(this.brokerId, this.clientRequestId)
             .subscribe(data => {
                 if (data) this.isValid = 1;
                 else this.isValid = 2;
-            });
+            });*/
         this.isValidated = true;
     }
 
     approve() {
         this.brokerService.approveClientRequest(this.brokerId, this.clientRequestId)
-            .subscribe(() => this.router.navigateByUrl('/broker/requests'),
+            .subscribe(() => this.router.navigateByUrl('/agent/requests'),
                 error => console.log(error));
     }
 
     decline() {
         this.brokerService.declineClientRequest(this.brokerId, this.clientRequestId)
-            .subscribe(() => this.router.navigateByUrl('/broker/requests'),
+            .subscribe(() => this.router.navigateByUrl('/agent/requests'),
                 error => console.log(error));
     }
 }

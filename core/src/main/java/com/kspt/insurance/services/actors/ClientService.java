@@ -81,6 +81,10 @@ public class ClientService extends CrudService<Client, ClientRepository> {
         return  closePolisRequestRepository.findByClientId(clientId);
     }
 
+    public List<InsurancePolis> getPolis(@NotNull final Long clientId) {
+        return insurancePolisRepository.findByClientId(clientId);
+    }
+
     @Transactional
     public Client setPassport(@NotNull final Long clientId,
                               @NotNull final Map<String, String> data) {

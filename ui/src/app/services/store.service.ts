@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
+import {RoleEnumModel} from '../models';
 
 @Injectable()
 export class StoreService {
     private id: number;
-    private role: RoleEnum;
+    private role: RoleEnumModel;
     private propertyId: number;
 
     constructor() {
@@ -25,15 +26,15 @@ export class StoreService {
         this.propertyId = propertyId;
     }
 
-    getRole(): RoleEnum {
+    getRole(): RoleEnumModel {
         return this.role;
     }
 
     setRole(value: string) {
         switch (value) {
-            case 'client': this.role = RoleEnum.Client; break;
-            case 'insuranceAgent': this.role = RoleEnum.InsuranceAgent; break;
-            case 'operator':  this.role = RoleEnum.Operator;
+            case 'client': this.role = RoleEnumModel.Client; break;
+            case 'agent': this.role = RoleEnumModel.InsuranceAgent; break;
+            case 'operator':  this.role = RoleEnumModel.Operator;
         }
     }
 }

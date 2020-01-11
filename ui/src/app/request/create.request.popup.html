@@ -1,4 +1,6 @@
-<div class="create-request-popup">
+<div class="request-popup">
+    <div class="request-popup-content">
+        <h2>Create polis request</h2>
     <div class="centerify">
         <table>
             <tr>
@@ -8,28 +10,49 @@
                 <th>Operator</th>
                 <th>Insurance Agent</th>
                 <th>Status</th>
-                <th>Data</th>
                 <th>Cost</th>
             </tr>
             <tr>
-                <td>{{request.date}}</td>
+                <td>{{date}}</td>
                 <td>{{request.period}}</td>
                 <td>{{client}}</td>
                 <td>{{operator}}</td>
-                <td>{{agent}}</td>
+                <td *ngIf="request.status === 'created'">
+                    <select class="inner-select" [(ngModel)]="selectedAgent" name="selectedAgent" id="selectedAgent">
+                        <option *ngFor="let insuranceAgent of agents" value="{{insuranceAgent.id}}">{{insuranceAgent.name}}</option>
+                    </select>
+                </td>
+                <td *ngIf="request.status !== 'created'">
+                    {{agent}}
+                </td>
                 <td>{{request.status}}</td>
-                <td>{{request.data}}</td>
-                <td>{{request.cost}}</td>
+                <td *ngIf="request.status === 'waiting for approve' && role === 1">
+                    <input [(ngModel)]="cost"
+                           type="number"
+                           placeholder="0"
+                           name="cost"
+                           id="cost">
+                </td>
+                <td *ngIf="request.status !== 'waiting for approve' || role !== 1">{{request.cost}}</td>
             </tr>
         </table>
     </div>
+     <br>
+        <h2>Data</h2>
+        <div *ngIf="request.status !== 'processed' || role !== 2; else agentDataInput">{{request.data}}</div>
     <br>
-    <div class="centerify">
+    <div *ngIf="request.status === 'waiting for approve' && role === 1" class="centerify">
         <button (click)="approve()"><span>Approve</span></button>
         <button (click)="decline()"><span>Decline</span></button>
     </div>
     <br>
     <div class="centerify">
-        <button (click)="close()"><span>Save</span></button>
+        <button *ngIf="request.status === 'created' || request.status === 'processed'" (click)="save()"><span>Save</span></button>
+        <button *ngIf="request.status === 'approved' && role === 0" (click)="pay()"><span>Pay for policy</span></button>
+        <button  (click)="close()"><span>Close</span></button>
+    </div>
+        <ng-template #agentDataInput>
+            <textarea [(ngModel)]="agentData" name="agentData" id="agentData"></textarea>
+        </ng-template>
     </div>
 </div>

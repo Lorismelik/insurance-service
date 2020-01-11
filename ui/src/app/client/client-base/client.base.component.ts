@@ -38,10 +38,5 @@ export class ClientBaseComponent implements OnInit {
     }
 
     agreement() {
-        if (this.client.agreement) {
-            this.router.navigateByUrl('/client/agreement/info');
-        } else {
-            this.router.navigateByUrl('/client/agreement');
-        }
     }
 }

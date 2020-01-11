@@ -13,7 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ClientBaseComponent} from "./client/client-base/client.base.component";
 import {ClientInfoComponent} from "./client/client-info/client.info.component";
 import {ClientPassportComponent} from "./client/client-passport/client.passport.component";
-import {ClientBrokerageAccountComponent} from "./client/client-brokerage-account/client.brokerage.account.component";
+import {ClientInsurancePolisComponent} from "./client/client-insurance-polis/client.insurance.polis.component";
 import {ClientBrokerageAccountInfoComponent} from "./client/client-brokerage-account-info/client.brokerage.account.info.component";
 import {ClientPutMoneyComponent} from "./client/client-put-money/client.put.money.component";
 import {ClientExchangeComponent} from "./client/client-exchange/client.exchange.component";
@@ -33,20 +33,23 @@ import {ClientStockComponent} from "./client/client-stock/client.stock.component
 import {ClientService} from "./services/client.service";
 import {OperatorService} from "./services/operator.service";
 import {AgentService} from "./services/agent.service";
-import {BrokerBaseComponent} from "./broker/broker-base/broker.base.component";
-import {BrokerInfoComponent} from "./broker/broker-info/broker.info.component";
-import {BrokerRequestsComponent} from "./broker/broker-requests/broker.requests.component";
-import {BrokerRequestComponent} from "./broker/broker-request/broker.request.component";
-import {BrokerAgreementsComponent} from "./broker/broker-agreements/broker.agreements.component";
-import {BrokerAgreementComponent} from "./broker/broker-agreement/broker.agreement.component";
+import {AgentBaseComponent} from "./agent/agent-base/agent.base.component";
+import {AgentInfoComponent} from "./agent/agent-info/agent.info.component";
+import {AgentProcessedRequestsComponent} from "./agent/agent-requests/agent.processed.requests.component";
+import {BrokerRequestComponent} from "./agent/broker-request/broker.request.component";
+import {BrokerAgreementsComponent} from "./agent/broker-agreements/broker.agreements.component";
+import {BrokerAgreementComponent} from "./agent/broker-agreement/broker.agreement.component";
 import {OperatorBaseComponent} from "./operator/operator-base/operator.base.component";
 import {OperatorInfoComponent} from "./operator/operator-info/operator.info.component";
 import {AdminBrokersComponent} from "./operator/admin-brokers/admin.brokers.component";
-import {OperatorUnparentedRequestsComponent} from "./operator/operator-requests/operator.unparented.requests.component";
 import {AdminRatesComponent} from "./operator/admin-rates/admin.rates.component";
 import {AdminBankComponent} from "./operator/admin-bank/admin.bank.component";
 import {StoreService} from './services/store.service';
 import {CreateRequestPopup} from './request/create.request.popup';
+import {CreatePeriodPopup} from './client/client-period-popup/client.period.popup';
+import {OperatorUnparentedRequestsComponent} from './operator/operator-requests/operator-unparanted-requests/operator.unparented.requests.component';
+import {OperatorProcessedRequestsComponent} from './operator/operator-requests/operator-processed-requests/operator.processed.requests.component';
+import {ClientProcessedRequestsComponent} from './client/client-requests/client-processed-requests/client.processed.requests.component';
 
 @NgModule({
     declarations: [
@@ -57,7 +60,7 @@ import {CreateRequestPopup} from './request/create.request.popup';
         ClientBaseComponent,
         ClientInfoComponent,
         ClientPassportComponent,
-        ClientBrokerageAccountComponent,
+        ClientInsurancePolisComponent,
         ClientBrokerageAccountInfoComponent,
         ClientAgreementComponent,
         ClientAgreementInfoComponent,
@@ -74,9 +77,9 @@ import {CreateRequestPopup} from './request/create.request.popup';
         ClientAssetComponent,
         ClientStocksComponent,
         ClientStockComponent,
-        BrokerBaseComponent,
-        BrokerInfoComponent,
-        BrokerRequestsComponent,
+        AgentBaseComponent,
+        AgentInfoComponent,
+        AgentProcessedRequestsComponent,
         BrokerRequestComponent,
         BrokerAgreementsComponent,
         BrokerAgreementComponent,
@@ -86,7 +89,10 @@ import {CreateRequestPopup} from './request/create.request.popup';
         OperatorUnparentedRequestsComponent,
         AdminRatesComponent,
         AdminBankComponent,
-        CreateRequestPopup
+        CreateRequestPopup,
+        CreatePeriodPopup,
+        OperatorProcessedRequestsComponent,
+        ClientProcessedRequestsComponent,
     ],
     imports: [
         CommonModule,

@@ -20,11 +20,5 @@ export class ClientAgreementExtendComponent implements OnInit {
     }
 
     extendBrokerAgreement() {
-        if (this.validity) {
-            this.clientService.extendBrokerAgreement(this.id, this.validity)
-                .subscribe(() => this.router.navigateByUrl('/client/agreement/info'));
-        } else {
-            alert('Enter agreement validity please');
-        }
     }
 }

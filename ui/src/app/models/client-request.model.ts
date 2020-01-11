@@ -1,7 +1,7 @@
 import {Entity} from "./entity.model";
 
 export class ClientRequest extends Entity {
-    date: Date;
+    startDate: Date;
     adminId: number;
     brokerId: number;
     clientId: number;
