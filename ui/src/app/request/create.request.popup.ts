@@ -34,7 +34,7 @@ export class CreateRequestPopup implements OnInit {
     ngOnInit() {
         this.request.operatorId ? this.operatorService.getById(this.request.operatorId).subscribe(data => this.operator = data.name, error => alert("Error is occured")) : this.operator = 'Not stated';
         this.request.clientId && this.clientService.getById(this.request.clientId).subscribe(data => this.client = data.name, error => alert("Error is occured"));
-        this.request.operatorId ? this.agentService.getById(this.request.insuranceAgentId).subscribe(data => this.agent = data.name, error => alert("Error is occured")) : this.agent = 'Not stated';
+        this.request.insuranceAgentId ? this.agentService.getById(this.request.insuranceAgentId).subscribe(data => this.agent = data.name, error => alert("Error is occured")) : this.agent = 'Not stated';
         this.agentService.getAll().subscribe(data => {
             data.forEach(x => this.agents.push({name: x.name, id: x.id}));
         });

@@ -18,6 +18,7 @@ import {ClientProcessedRequestsComponent} from './client/client-requests/client-
 import {ClientClosedRequestsComponent} from './client/client-requests/client-closed-requests/client.closed.requests.component';
 import {AgentClosedRequestsComponent} from './agent/agent-requests/agent-closed-requests/agent.closed.requests.component';
 import {OperatorClosedRequestsComponent} from './operator/operator-requests/operator-closed-requests/operator.closed.requests.component';
+import {AgentClients} from './agent/agent-clients/agent.clients.component';
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -33,6 +34,7 @@ const routes: Routes = [
     {path: 'agent/info', component: AgentInfoComponent},
     {path: 'agent/requests/processed', component: AgentProcessedRequestsComponent},
     {path: 'agent/requests/closed', component: AgentClosedRequestsComponent},
+    {path: 'agent/clients', component: AgentClients},
     {path: 'operator/base', component: OperatorBaseComponent},
     {path: 'operator/info', component: OperatorInfoComponent},
     {path: 'operator/requests/opened', component: OperatorUnparentedRequestsComponent},

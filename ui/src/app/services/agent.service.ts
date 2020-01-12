@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../core/enviroment';
-import {Agent} from '../models';
+import {Agent, Client} from '../models';
 import {CreateRequest} from '../models/requests/CreateRequest';
 import {InsurancePaymentsRequest} from '../models/requests/InsurancePaymentsRequest';
 
@@ -25,6 +25,11 @@ export class AgentService {
     getCreatePolis(agentId: number) {
         const url = this.urlWithAgentId(environment.getCreatePolisAgent, agentId);
         return this.http.get<CreateRequest[]>(url);
+    }
+
+    getClientsById(agentId: number) {
+        const url = this.urlWithAgentId(environment.getClientsById, agentId);
+        return this.http.get<Client[]>(url);
     }
 
     getInsurancePayments(agentId: number) {

@@ -1,0 +1,31 @@
+<div class="request-popup">
+    <div class="request-popup-content">
+        <h2>Insurance policy</h2>
+        <div class="centerify">
+            <table>
+                <tr>
+                    <th>Client</th>
+                    <th>Agent</th>
+                    <th>Period</th>
+                    <th>Start date</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>{{client}}</td>
+                    <td>{{agent}}</td>
+                    <td>{{polis.period}}</td>
+                    <td>{{date}}</td>
+                    <td>{{polis.status}}</td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <h2>Data</h2>
+        <div class="centerify">
+            {{polis.data}}
+        </div>
+        <div class="centerify">
+            <button  class="popup-button" (click)="close()"><span>Close</span></button>
+        </div>
+    </div>
+</div>

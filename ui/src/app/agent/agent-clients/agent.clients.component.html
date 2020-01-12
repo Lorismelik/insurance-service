@@ -1,0 +1,22 @@
+<h2>My clients</h2>
+
+<div>
+    <div class="centerify">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Passport series</th>
+                <th>Passport number</th>
+            </tr>
+            <tr *ngFor="let client of clients">
+                <td>{{client.name}}</td>
+                <td>{{client.passport.series}}</td>
+                <td>{{client.passport.number}}</td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div class="centerify">
+        <button [routerLink]="'/agent/base'"><span>Back</span></button>
+    </div>
+</div>

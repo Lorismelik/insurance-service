@@ -1,6 +1,7 @@
 package com.kspt.insurance.services.actors;
 
 import com.kspt.insurance.configuration.Constants;
+import com.kspt.insurance.models.actors.Client;
 import com.kspt.insurance.models.requests.CreatePolisRequest;
 import com.kspt.insurance.models.actors.InsuranceAgent;
 import com.kspt.insurance.models.requests.InsurancePaymentsRequest;
@@ -12,9 +13,7 @@ import com.kspt.insurance.services.CrudService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,6 +31,18 @@ public class InsuranceAgentService extends CrudService<InsuranceAgent, Insurance
         this.createPolisRequestRepository = createPolisRequestRepository;
         this.clientRepository = clientRepository;
         this.insurancePaymentsRequestRepository = insurancePaymentsRequestRepository;
+    }
+
+    public List<Client> getClientsById(@NotNull final Long agentId) {
+        Set<Long> clientsIds = new HashSet<>();
+        createPolisRequestRepository.findAll().stream().filter(x -> {
+            if (x.getInsuranceAgentId() != null) return x.getInsuranceAgentId().equals(agentId); else return false;
+        }).forEach(x -> clientsIds.add(x.getClientId()));
+        insurancePaymentsRequestRepository.findAll().stream().filter(x -> {
+            if (x.getInsuranceAgentId() != null) return x.getInsuranceAgentId().equals(agentId); else return false;
+        }).forEach(x -> clientsIds.add(x.getClientId()));
+        return (List<Client>) clientRepository.findAllById(clientsIds);
+
     }
 
     public List<CreatePolisRequest> getCreatePolisRequestById(@NotNull final Long agentId) {

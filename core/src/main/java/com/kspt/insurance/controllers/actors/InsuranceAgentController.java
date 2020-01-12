@@ -2,6 +2,7 @@ package com.kspt.insurance.controllers.actors;
 
 import com.kspt.insurance.configuration.Constants;
 import com.kspt.insurance.controllers.CrudController;
+import com.kspt.insurance.models.actors.Client;
 import com.kspt.insurance.models.requests.CreatePolisRequest;
 import com.kspt.insurance.models.actors.InsuranceAgent;
 import com.kspt.insurance.models.requests.InsurancePaymentsRequest;
@@ -42,5 +43,10 @@ public final class InsuranceAgentController extends CrudController<InsuranceAgen
     @GetMapping("{agentId}/getCreatePolis")
     public List<CreatePolisRequest> getCreatePolis(@PathVariable final Long agentId) {
         return service.getCreatePolisRequestById(agentId);
+    }
+
+    @GetMapping("{agentId}/getClientsById")
+    public List<Client> getClientsById(@PathVariable final Long agentId) {
+        return service.getClientsById(agentId);
     }
 }

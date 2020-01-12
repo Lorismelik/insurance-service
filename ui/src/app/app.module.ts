@@ -31,6 +31,8 @@ import {ClientProcessedRequestsComponent} from './client/client-requests/client-
 import {ClientClosedRequestsComponent} from './client/client-requests/client-closed-requests/client.closed.requests.component';
 import {AgentClosedRequestsComponent} from './agent/agent-requests/agent-closed-requests/agent.closed.requests.component';
 import {OperatorClosedRequestsComponent} from './operator/operator-requests/operator-closed-requests/operator.closed.requests.component';
+import {ClientInsurancePolisPopup} from './client/client-insurance-polis-popup/client.insurance.polis.popup';
+import {AgentClients} from './agent/agent-clients/agent.clients.component';
 
 @NgModule({
     declarations: [
@@ -54,7 +56,9 @@ import {OperatorClosedRequestsComponent} from './operator/operator-requests/oper
         ClientProcessedRequestsComponent,
         ClientClosedRequestsComponent,
         AgentClosedRequestsComponent,
-        OperatorClosedRequestsComponent
+        OperatorClosedRequestsComponent,
+        ClientInsurancePolisPopup,
+        AgentClients
     ],
     imports: [
         CommonModule,

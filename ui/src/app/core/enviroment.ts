@@ -51,6 +51,7 @@ export function createEnv() {
         getAllAgents: agentPrefix + 'getAll',
         getInsurancePaymentsAgent : agentPrefix + ':agentId/getInsurancePayments',
         getCreatePolisAgent: agentPrefix + ':agentId/getCreatePolis',
+        getClientsById: agentPrefix + ':agentId/getClientsById',
         processCreateRequest: agentPrefix + ':agentId/processCreateRequest',
 
         getClient: clientPrefix,
