@@ -11,9 +11,11 @@ import {AgentService} from '../../services/agent.service';
 export class ClientInsurancePolisPopup implements OnInit {
     @Output() public onCloseEvent = new EventEmitter<any>();
     @Input() public polis: Polis;
+    private showCommentPopup: boolean = false;
     private date: string;
     private client: string;
     private agent: string;
+    private data: string;
 
     constructor(private router: Router,
                 private storeService: StoreService,
@@ -24,18 +26,23 @@ export class ClientInsurancePolisPopup implements OnInit {
         this.clientService.getById(this.polis.clientId).subscribe(data => this.client = data.name, error => alert("Error is occured"));
         this.agentService.getById(this.polis.insuranceAgentId).subscribe(data => this.agent = data.name, error => alert("Error is occured"));
         this.date = new Date(this.polis.startDate).toDateString();
+        this.data = this.polis.data;
     }
 
-    approve() {
+    update(newData: string) {
+        this.clientService.createUpdatePolisRequest(this.storeService.getId(), this.polis.id, newData)
+            .subscribe(x => this.onCloseEvent.emit(), error => alert("Error is occured"));
     }
 
-    decline() {
+    onPaymentsClick() {
+        this.showCommentPopup = true;
+    }
+
+    onClosePayments() {
+        this.showCommentPopup = false;
     }
 
     close() {
         this.onCloseEvent.emit();
-    }
-
-    save() {
     }
 }

@@ -23,7 +23,7 @@ import {AgentProcessedRequestsComponent} from './agent/agent-requests/agent-proc
 import {OperatorBaseComponent} from './operator/operator-base/operator.base.component';
 import {OperatorInfoComponent} from './operator/operator-info/operator.info.component';
 import {StoreService} from './services/store.service';
-import {CreateRequestPopup} from './request/create.request.popup';
+import {CreateRequestPopup} from './request/create-request-popup/create.request.popup';
 import {CreatePeriodPopup} from './client/client-period-popup/client.period.popup';
 import {OperatorUnparentedRequestsComponent} from './operator/operator-requests/operator-unparanted-requests/operator.unparented.requests.component';
 import {OperatorProcessedRequestsComponent} from './operator/operator-requests/operator-processed-requests/operator.processed.requests.component';
@@ -33,6 +33,9 @@ import {AgentClosedRequestsComponent} from './agent/agent-requests/agent-closed-
 import {OperatorClosedRequestsComponent} from './operator/operator-requests/operator-closed-requests/operator.closed.requests.component';
 import {ClientInsurancePolisPopup} from './client/client-insurance-polis-popup/client.insurance.polis.popup';
 import {AgentClients} from './agent/agent-clients/agent.clients.component';
+import {UpdatePolisDataRequestPopup} from './request/update-polis-data-popup/update.polis.data.request.popup';
+import {ClientPaymentRequestCommentPopup} from './client/client-payment-request-comment-popup/client.payment.request.comment.popup';
+import {GetPaymentsRequestPopup} from './request/get-payments-request-popup/get.payments.request.popup';
 
 @NgModule({
     declarations: [
@@ -58,6 +61,9 @@ import {AgentClients} from './agent/agent-clients/agent.clients.component';
         AgentClosedRequestsComponent,
         OperatorClosedRequestsComponent,
         ClientInsurancePolisPopup,
+        UpdatePolisDataRequestPopup,
+        ClientPaymentRequestCommentPopup,
+        GetPaymentsRequestPopup,
         AgentClients
     ],
     imports: [

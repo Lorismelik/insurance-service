@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
-import {OperatorService} from '../services/operator.service';
-import {StoreService} from '../services/store.service';
-import {CreateRequest} from '../models/requests/CreateRequest';
-import {ClientService} from '../services/client.service';
-import {AgentService} from '../services/agent.service';
-import {RoleEnumModel} from '../models';
+import {OperatorService} from '../../services/operator.service';
+import {StoreService} from '../../services/store.service';
+import {CreateRequest} from '../../models/requests/CreateRequest';
+import {ClientService} from '../../services/client.service';
+import {AgentService} from '../../services/agent.service';
+import {RoleEnumModel} from '../../models';
 
 
 @Component({

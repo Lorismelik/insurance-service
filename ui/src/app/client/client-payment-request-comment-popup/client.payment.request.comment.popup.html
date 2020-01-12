@@ -1,0 +1,12 @@
+<div class="comment-popup">
+    <div class="comment-popup-content">
+        <h2>Comment for your insurance issue</h2>
+        <div class="centerify">
+            <textarea [(ngModel)]="data" name="data" id="data"></textarea>
+        </div>
+        <div class="centerify">
+            <button class="popup-button" (click)="save()"><span>Make request</span></button>
+            <button  class="popup-button" (click)="close()"><span>Close</span></button>
+        </div>
+    </div>
+</div>

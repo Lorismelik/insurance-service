@@ -25,6 +25,9 @@
     </div>
     <br>
     <div *ngIf="updateDataRequests">
+        <update-polis-data-request-popup *ngIf="showUpdateRequestPopup"
+                                         [request]="updateRequest"
+                                         (onCloseEvent)="onCloseUpdateRequestPopup()"> </update-polis-data-request-popup>
         <h2>Update data requests</h2>
         <div class="centerify">
             <table>
@@ -34,7 +37,7 @@
                     <th>Status</th>
                 </tr>
                 <tr *ngFor="let request of updateDataRequests"
-                    (click)="onInsurancePaymentRequestClick(request)">
+                    (click)="onUpdateRequestClick(request)">
                     <td>{{request.id}}</td>
                     <td>{{request.insurancePolisId}}</td>
                     <td>{{request.status}}</td>
@@ -44,6 +47,9 @@
     </div>
     <br>
     <div *ngIf="insurancePaymentsRequests">
+        <get-payments-request-popup *ngIf="showPaymentsRequestPopup"
+                                         [request]="paymentsRequest"
+                                    (onCloseEvent)="onClosePaymentsRequestPopup()"> </get-payments-request-popup>
         <h2>Get insurance payments requests</h2>
         <div class="centerify">
             <table>
@@ -55,7 +61,7 @@
                     <th>Status</th>
                 </tr>
                 <tr *ngFor="let request of insurancePaymentsRequests"
-                    (click)="onInsurancePaymentRequestClick(request)">
+                    (click)="onPaymentsRequestClick(request)">
                     <td>{{request.id}}</td>
                     <td>{{request.insurancePolisId}}</td>
                     <td>{{request.operatorId}}</td>
@@ -67,7 +73,7 @@
     </div>
     <br>
     <div class="centerify">
-        <button *ngIf="!showCreateRequestPopup"
+        <button *ngIf="!showCreateRequestPopup && !showPaymentsRequestPopup && !showUpdateRequestPopup"
                 [routerLink]="'/client/base'"><span>Back</span></button>
     </div>
 </div>

@@ -95,16 +95,13 @@ public class OperatorService extends CrudService<Operator, OperatorRepository> {
         Long requestId = Long.parseLong(data.get("requestId"));
         Operator operator = repository.findById(operatorId).orElse(null);
         if (operator == null || !operator.getIsAuthenticated()) return null;
-        Long agentId = Long.parseLong(data.get("agentId"));
-
         Optional<InsurancePaymentsRequest> requestOptional = insurancePaymentsRequestRepository.findById(requestId);
         if (!requestOptional.isPresent()) return null;
         InsurancePaymentsRequest request = requestOptional.get();
         request.setOperatorId(operatorId);
-        request.setInsuranceAgentId(agentId);
         request.setStatus(Constants.InsurancePaymentsStatus.PROCESSED);
         InsurancePaymentsRequest savedRequest = insurancePaymentsRequestRepository.save(request);
-        InsuranceAgent agent = insuranceAgentRepository.findById(agentId).get();
+        InsuranceAgent agent = insuranceAgentRepository.findById(request.getInsuranceAgentId()).get();
         List<InsurancePaymentsRequest> operatorRequests = operator.getInsurancePaymentsRequests();
         operatorRequests.add(savedRequest);
         List<InsurancePaymentsRequest> agentRequests = agent.getInsurancePaymentsRequests();
@@ -222,7 +219,7 @@ public class OperatorService extends CrudService<Operator, OperatorRepository> {
             request.setStatus(Constants.UpdatePolisDataStatus.DECLINED);
         } else {
             request.setStatus(Constants.UpdatePolisDataStatus.COMPLETED);
-            String newData = data.get("newData");
+            String newData = request.getNewData();
             insurancePolisRepository.findById(request.getInsurancePolisId()).ifPresent( x -> {
                 x.setData(newData);
                 insurancePolisRepository.save(x);

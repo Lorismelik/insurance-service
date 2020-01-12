@@ -10,28 +10,9 @@ export function createEnv() {
         getClientInfo: clientPrefix,
         getClientById: clientPrefix + 'get/:clientId',
         setClientPassport: 'setPassport',
-        openBrokerageAccount: clientPrefix + 'openBrokerageAccount/:clientId',
-        closeBrokerageAccount: clientPrefix + 'closeBrokerageAccount/:clientId',
-        putMoneyToAccount: clientPrefix + ':clientId/putMoneyToAccount',
-        makeBrokerAgreement: clientPrefix + ':clientId/makeBrokerAgreement',
-        extendBrokerAgreement: clientPrefix + ':clientId/extendBrokerAgreement',
-        breakBrokerAgreement: clientPrefix + ':clientId/breakBrokerAgreement',
-        exchangeMoneyToStocks: clientPrefix + ':clientId/exchangeMoneyToStocks',
-        exchangeStocksToMoney: clientPrefix + ':clientId/exchangeStocksToMoney',
-        getClientTransactions: clientPrefix + ':clientId/getTransactions',
-        getClientTransactionById: clientPrefix + ':clientId/transaction/:id',
-        getClientRequests: clientPrefix + ':clientId/getRequests',
-        getClientRequestById: clientPrefix + ':clientId/request/:id',
-
-        checkBrokerRequests: agentPrefix + ':brokerId/checkRequests',
-        declineClientRequest: agentPrefix + ':brokerId/declineClientRequest',
 
         getOperator: operatorPrefix,
         getOperatorById: operatorPrefix + 'get/:operatorId',
-        getAdminBrokers: operatorPrefix + ':adminId/getBrokers',
-        declineRequest: operatorPrefix + 'declineRequest/:clientRequestId',
-        getRates: operatorPrefix + 'getRates',
-        getBankAssets: operatorPrefix + 'getBankAssets',
 
         signIn: systemPrefix + 'signIn',
         signUp: systemPrefix + 'signUp',
@@ -45,6 +26,9 @@ export function createEnv() {
         getUpdateDataOperator: operatorPrefix + ':operatorId/getUpdateData',
         delegateCreateRequest: operatorPrefix + ':operatorId/delegateCreate',
         approveCreateRequest: operatorPrefix + ':operatorId/approveCreate',
+        approveUpdateData: operatorPrefix + ':operatorId/approveUpdateData',
+        approveGetInsurancePayments: operatorPrefix+ ':operatorId/approveGetInsurancePayments',
+        delegateGetInsurancePayments: operatorPrefix + ':operatorId/delegateGetInsurancePayments',
 
         getAgent: agentPrefix,
         getAgentById: agentPrefix + 'get/:agentId',
@@ -53,6 +37,7 @@ export function createEnv() {
         getCreatePolisAgent: agentPrefix + ':agentId/getCreatePolis',
         getClientsById: agentPrefix + ':agentId/getClientsById',
         processCreateRequest: agentPrefix + ':agentId/processCreateRequest',
+        processGetInsurancePaymentsRequest: agentPrefix + ':agentId/processGetInsurancePaymentsRequest',
 
         getClient: clientPrefix,
         getPolis: clientPrefix + ':clientId/getPolis',
@@ -61,7 +46,9 @@ export function createEnv() {
         getUpdateDataClient: clientPrefix + ':clientId/getUpdateData',
         getInsurancePaymentsClient: clientPrefix + ':clientId/getInsurancePayments',
         getClosePolisClient: clientPrefix + ':clientId/getClosePolis',
-        payForPolis: clientPrefix + ':clientId/payForPolis'
+        payForPolis: clientPrefix + ':clientId/payForPolis',
+        createGetInsurancePaymentsRequest: clientPrefix + ':clientId/createGetInsurancePaymentsRequest',
+        createUpdatePolisRequest: clientPrefix + ':clientId/createUpdatePolisRequest',
     };
 }
 

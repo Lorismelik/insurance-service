@@ -24,9 +24,9 @@ export class ClientService {
         return this.http.get<Polis[]>(url);
     }
 
-    public setClientPassport(clientId: number, series: number, numberr: number) {
+    public setClientPassport(clientId: number, series: number, number: number) {
         const url = `${environment.getClientInfo}${clientId}/${environment.setClientPassport}`;
-        return this.http.post<Client>(url, {series, numberr});
+        return this.http.post<Client>(url, {series, number});
     }
 
     createRequestForPolis(clientId: number, period: string) {
@@ -58,6 +58,17 @@ export class ClientService {
         const url = this.urlWithClientId(environment.payForPolis, clientId);
         return this.http.post<Polis>(url, {requestId});
     }
+
+    public createUpdatePolisRequest(clientId: number, polisId: number, newData: string) {
+        const url = this.urlWithClientId(environment.createUpdatePolisRequest, clientId);
+        return this.http.post<UpdatePolisDataRequest>(url, {polisId, newData});
+    }
+
+    public CreateGetInsurancePaymentsRequest(clientId: number, polisId: number, additionalData: string) {
+        const url = this.urlWithClientId(environment.createGetInsurancePaymentsRequest, clientId);
+        return this.http.post<InsurancePaymentsRequest>(url, {polisId, additionalData});
+    }
+
 
     private urlWithClientId(urlWithoutId: string, clientId: number): string {
         return urlWithoutId.replace(':clientId', `${clientId}`);

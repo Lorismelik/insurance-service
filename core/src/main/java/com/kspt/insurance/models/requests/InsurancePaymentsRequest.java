@@ -49,7 +49,11 @@ public class InsurancePaymentsRequest extends AbstractEntity {
     private Instant date;
 
     public InsurancePaymentsRequest(@NotNull final Long clientId,
-                              @NotNull final String additionalData) {
+                                    @NotNull final String additionalData,
+                                    @NotNull final Long insurancePolisId,
+                                    @NotNull final Long insuranceAgentId) {
+        this.insuranceAgentId = insuranceAgentId;
+        this.insurancePolisId = insurancePolisId;
         this.clientId = clientId;
         this.additionalData = additionalData;
         this.date = Instant.now();

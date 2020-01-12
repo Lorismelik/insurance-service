@@ -46,15 +46,11 @@ public class InsuranceAgentService extends CrudService<InsuranceAgent, Insurance
     }
 
     public List<CreatePolisRequest> getCreatePolisRequestById(@NotNull final Long agentId) {
-        return  createPolisRequestRepository.findByInsuranceAgentId(agentId).stream().filter(x ->
-                !x.getStatus().equals(Constants.InsurancePaymentsStatus.DECLINED) &&  !x.getStatus().equals(Constants.InsurancePaymentsStatus.COMPLETED))
-                .collect(Collectors.toList());
+        return  createPolisRequestRepository.findByInsuranceAgentId(agentId);
     }
 
     public List<InsurancePaymentsRequest> getInsurancePaymentsRequestById(@NotNull final Long agentId) {
-        return  insurancePaymentsRequestRepository.findByInsuranceAgentId(agentId).stream().filter(x ->
-                !x.getStatus().equals(Constants.InsurancePaymentsStatus.DECLINED) &&  !x.getStatus().equals(Constants.InsurancePaymentsStatus.COMPLETED))
-                .collect(Collectors.toList());
+        return  insurancePaymentsRequestRepository.findByInsuranceAgentId(agentId);
     }
 
     public CreatePolisRequest processCreatePolisRequest(@NotNull final Long agentId,

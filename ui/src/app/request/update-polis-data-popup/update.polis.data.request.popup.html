@@ -1,0 +1,33 @@
+<div class="request-popup">
+    <div class="request-popup-content">
+        <h2>Update policy data request</h2>
+        <div class="centerify">
+            <table>
+                <tr>
+                    <th>Client</th>
+                    <th>Polis</th>
+                    <th>Operator</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>{{client}}</td>
+                    <td>{{request.insurancePolisId}}</td>
+                    <td>{{operator}}</td>
+                    <td>{{request.status}}</td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <h2>New data</h2>
+        <div class="centerify">
+            <div>{{request.newData}}</div>
+        </div>
+        <div class="centerify">
+            <button *ngIf="role === 1 && request.status === 'created'" class="popup-button" (click)="approve()"><span>Approve</span></button>
+            <button *ngIf="role === 1 && request.status === 'created'" class="popup-button" (click)="approve()"><span>Decline</span></button>
+        </div>
+        <div class="centerify">
+            <button  class="popup-button" (click)="close()"><span>Close</span></button>
+        </div>
+    </div>
+</div>

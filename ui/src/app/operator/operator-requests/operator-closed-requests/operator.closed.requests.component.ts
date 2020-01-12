@@ -5,7 +5,7 @@ import {OperatorService} from '../../../services/operator.service';
 import {Router} from '@angular/router';
 import {StoreService} from '../../../services/store.service';
 import {UpdatePolisDataRequest} from '../../../models/requests/UpdateDataRequest';
-import {CreateRequestPopup} from '../../../request/create.request.popup';
+import {CreateRequestPopup} from '../../../request/create-request-popup/create.request.popup';
 
 
 
@@ -14,12 +14,16 @@ import {CreateRequestPopup} from '../../../request/create.request.popup';
 })
 export class OperatorClosedRequestsComponent implements OnInit {
     @ViewChild(CreateRequestPopup, {static: false}) private createRequestPopup: CreateRequestPopup;
-    private showCreateRequestPopup: boolean = false;
+    private showCreateRequestPopup = false;
+    private showUpdateRequestPopup = false;
+    private showPaymentsRequestPopup = false;
     protected operatorId: number;
     protected createRequests: CreateRequest[];
     private createRequest: CreateRequest;
     protected updateDataRequests: UpdatePolisDataRequest[];
+    private updateRequest: UpdatePolisDataRequest;
     protected insurancePaymentsRequests: InsurancePaymentsRequest[];
+    private paymentsRequest: InsurancePaymentsRequest;
     constructor(private storeService: StoreService,
                 private operatorService: OperatorService,
                 private router: Router) {
@@ -35,19 +39,29 @@ export class OperatorClosedRequestsComponent implements OnInit {
         this.showCreateRequestPopup = true;
     }
 
+    onUpdateRequestClick(request: UpdatePolisDataRequest) {
+        this.updateRequest = request;
+        this.showUpdateRequestPopup = true;
+    }
+
+    onPaymentsRequestClick(request: InsurancePaymentsRequest) {
+        this.paymentsRequest = request;
+        this.showPaymentsRequestPopup = true;
+    }
+
     onCloseCreateRequestPopup() {
         this.showCreateRequestPopup = false;
         this.getRequest();
     }
 
-    onUpdateRequestClick(request: UpdatePolisDataRequest) {
-        this.storeService.setPropertyId(request.id);
-        return this.router.navigateByUrl(`/admin/request/${request.id}`);
+    onClosePaymentsRequestPopup() {
+        this.showPaymentsRequestPopup = false;
+        this.getRequest();
     }
 
-    onInsurancePaymentRequestClick(request: InsurancePaymentsRequest) {
-        this.storeService.setPropertyId(request.id);
-        return this.router.navigateByUrl(`/admin/request/${request.id}`);
+    onCloseUpdateRequestPopup() {
+        this.showUpdateRequestPopup = false;
+        this.getRequest();
     }
 
     getRequest() {

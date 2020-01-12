@@ -42,6 +42,11 @@ export class AgentService {
         return this.http.post<CreateRequest>(url, {data, requestId});
     }
 
+    processGetInsurancePaymentsRequest(agentd: number, review: string, requestId: number, payments: number) {
+        const url = this.urlWithAgentId(environment.processGetInsurancePaymentsRequest, agentd);
+        return this.http.post<CreateRequest>(url, {review, payments, requestId});
+    }
+
     private urlWithAgentId(urlWithoutId: string, agentId: number): string {
         return urlWithoutId.replace(':agentId', `${agentId}`);
     }

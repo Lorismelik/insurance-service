@@ -50,8 +50,8 @@ public final class ClientController extends CrudController<Client, ClientService
     }
 
     // additionalData
-    @PostMapping("{clientId}/CreateGetInsurancePaymentsRequest")
-    public InsurancePaymentsRequest getInsurancePayments(@PathVariable final Long clientId,
+    @PostMapping("{clientId}/createGetInsurancePaymentsRequest")
+    public InsurancePaymentsRequest createGetInsurancePaymentsRequest(@PathVariable final Long clientId,
                                                          @RequestBody final Map<String, String> data) {
         return service.createRequestForInsurancePayments(clientId, data);
     }

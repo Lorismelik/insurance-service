@@ -3,12 +3,13 @@ import {Router} from '@angular/router';
 import {ClientService} from '../../services/client.service';
 import {StoreService} from '../../services/store.service';
 @Component({
-    selector: 'client-period-popup',
-    templateUrl: './client.period.popup.html'
+    selector: 'client-payment-request-comment-popup',
+    templateUrl: './client.payment.request.comment.popup.html'
 })
-export class CreatePeriodPopup implements OnInit {
+export class ClientPaymentRequestCommentPopup implements OnInit {
     @Output() public onCloseEvent = new EventEmitter<any>();
-    private period: string;
+    @Input() public polisId: number;
+    private data: string;
 
     constructor(private router: Router,
                 private storeService: StoreService,
@@ -22,10 +23,8 @@ export class CreatePeriodPopup implements OnInit {
     }
 
     save() {
-        if (this.period) {
-            this.clientService.createRequestForPolis(this.storeService.getId(), this.period).subscribe(
-                x => this.onCloseEvent.emit(), error => alert("Error has occured")
-            );
-        }
+        this.clientService.CreateGetInsurancePaymentsRequest(this.storeService.getId(), this.polisId, this.data).subscribe(
+            x => this.onCloseEvent.emit(), error => alert("Error has occured")
+        );
     }
 }

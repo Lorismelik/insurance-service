@@ -60,9 +60,23 @@ export class OperatorService {
         return this.http.post<CreateRequest>(url, {requestId, cost, approved});
     }
 
-    getById(adminId: number) {
-        const url = this.urlWithOperatorId(environment.getOperatorById, adminId);
+    approveUpdateData(operatorId: number, requestId: number, approved: boolean) {
+        const url = this.urlWithOperatorId(environment.approveUpdateData, operatorId);
+        return this.http.post<UpdatePolisDataRequest>(url, {requestId, approved});
+    }
+
+    approvePaymentsRequest(operatorId: number, requestId: number, approved: boolean) {
+        const url = this.urlWithOperatorId(environment.approveGetInsurancePayments, operatorId);
+        return this.http.post<InsurancePaymentsRequest>(url, {requestId, approved});
+    }
+    getById(operatorId: number) {
+        const url = this.urlWithOperatorId(environment.getOperatorById, operatorId);
         return this.http.get<Operator>(url);
+    }
+
+    delegateGetInsurancePayments(operatorId: number, requestId: number) {
+        const url = this.urlWithOperatorId(environment.delegateGetInsurancePayments, operatorId);
+        return this.http.post<InsurancePaymentsRequest>(url, {requestId});
     }
 
     private urlWithOperatorId(urlWithoutId: string, operatorId: number): string {

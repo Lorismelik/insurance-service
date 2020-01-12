@@ -25,6 +25,10 @@
     </div>
     <br>
     <div *ngIf="insurancePaymentsRequests">
+        <get-payments-request-popup *ngIf="showPaymentsRequestPopup"
+                              [request]="paymentsRequest"
+                              [role]="this.storeService.getRole()"
+                              (onCloseEvent)="onClosePaymentsRequestPopup()"> </get-payments-request-popup>
         <h2>Get insurance payments requests</h2>
         <div class="centerify">
             <table>
@@ -35,7 +39,7 @@
                     <th>Status</th>
                 </tr>
                 <tr *ngFor="let request of insurancePaymentsRequests"
-                    (click)="onInsurancePaymentRequestClick(request)">
+                    (click)="onPaymentsRequestClick(request)">
                     <td>{{request.id}}</td>
                     <td>{{request.insurancePolisId}}</td>
                     <td>{{request.clientId}}</td>
@@ -46,7 +50,7 @@
     </div>
     <br>
     <div class="centerify">
-        <button *ngIf="!showCreateRequestPopup"
+        <button *ngIf="!showCreateRequestPopup && !showPaymentsRequestPopup"
                 [routerLink]="'/operator/base'"><span>Back</span></button>
     </div>
 </div>

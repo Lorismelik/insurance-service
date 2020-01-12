@@ -1,5 +1,10 @@
 <div class="request-popup">
     <div class="request-popup-content">
+        <client-payment-request-comment-popup *ngIf="showCommentPopup"
+                                              [polisId]="polis.id"
+                                              (onCloseEvent)="onClosePayments()">
+        </client-payment-request-comment-popup>
+        <div *ngIf="!showCommentPopup">
         <h2>Insurance policy</h2>
         <div class="centerify">
             <table>
@@ -21,11 +26,17 @@
         </div>
         <br>
         <h2>Data</h2>
+        <div class="centerify" >
+            <textarea *ngIf="polis.status === 'opened'" [(ngModel)]="data" name="data" id="data"></textarea>
+            <div *ngIf="polis.status !== 'opened'">{{polis.data}}</div>
+        </div>
         <div class="centerify">
-            {{polis.data}}
+            <button *ngIf="polis.status == 'opened'" class="popup-button" (click)="onPaymentsClick()"><span>Request payments</span></button>
+            <button *ngIf="polis.status == 'opened'" class="popup-button" (click)="update(data)"><span>Update</span></button>
         </div>
         <div class="centerify">
             <button  class="popup-button" (click)="close()"><span>Close</span></button>
+        </div>
         </div>
     </div>
 </div>

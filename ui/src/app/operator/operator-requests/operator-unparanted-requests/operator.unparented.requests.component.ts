@@ -5,7 +5,7 @@ import {InsurancePaymentsRequest} from '../../../models/requests/InsurancePaymen
 import {OperatorService} from '../../../services/operator.service';
 import {StoreService} from '../../../services/store.service';
 import {UpdatePolisDataRequest} from '../../../models/requests/UpdateDataRequest';
-import {CreateRequestPopup} from '../../../request/create.request.popup';
+import {CreateRequestPopup} from '../../../request/create-request-popup/create.request.popup';
 
 
 @Component({
@@ -14,18 +14,20 @@ import {CreateRequestPopup} from '../../../request/create.request.popup';
 export class OperatorUnparentedRequestsComponent implements OnInit {
     @ViewChild(CreateRequestPopup, {static: false}) private createRequestPopup: CreateRequestPopup;
     private showCreateRequestPopup: boolean = false;
+    private showUpdateRequestPopup: boolean = false;
+    private showPaymentsRequestPopup: boolean = false;
     protected operatorId: number;
     protected createRequests: CreateRequest[];
     private createRequest: CreateRequest;
     protected updateDataRequests: UpdatePolisDataRequest[];
+    private updateRequest: UpdatePolisDataRequest;
     protected insurancePaymentsRequests: InsurancePaymentsRequest[];
+    private insurancePaymentsRequest: InsurancePaymentsRequest;
     constructor(private storeService: StoreService,
                 private operatorService: OperatorService,
                 private router: Router) {
         this.operatorId = this.storeService.getId();
-        this.operatorService.checkUnparentedCreateRequests(this.operatorId).subscribe(data => this.createRequests = data, error => alert("Error is occured"));
-        this.operatorService.checkUnresolvedUpdateDataRequests(this.operatorId).subscribe(data => this.updateDataRequests = data, error => alert("Error is occured"));
-        this.operatorService.checkUnresolvedGetInsurancePaymentsRequests(this.operatorId).subscribe(data => this.insurancePaymentsRequests = data, error => alert("Error is occured"));
+        this.getRequests();
     }
 
     ngOnInit() {
@@ -36,20 +38,34 @@ export class OperatorUnparentedRequestsComponent implements OnInit {
         this.showCreateRequestPopup = true;
     }
 
+    onUpdateRequestClick(request: UpdatePolisDataRequest) {
+        this.updateRequest = request;
+        this.showUpdateRequestPopup = true;
+    }
+
+    onPaymentRequestClick(request: InsurancePaymentsRequest) {
+        this.insurancePaymentsRequest = request;
+        this.showPaymentsRequestPopup = true;
+    }
+
     onCloseCreateRequestPopup() {
         this.showCreateRequestPopup = false;
+        this.getRequests();
+    }
+
+    onCloseUpdateRequestPopup() {
+        this.showUpdateRequestPopup = false;
+        this.getRequests();
+    }
+
+    onClosePaymentsRequestPopup() {
+        this.showPaymentsRequestPopup = false;
+        this.getRequests();
+    }
+
+    getRequests() {
         this.operatorService.checkUnparentedCreateRequests(this.operatorId).subscribe(data => this.createRequests = data, error => alert("Error is occured"));
         this.operatorService.checkUnresolvedUpdateDataRequests(this.operatorId).subscribe(data => this.updateDataRequests = data, error => alert("Error is occured"));
         this.operatorService.checkUnresolvedGetInsurancePaymentsRequests(this.operatorId).subscribe(data => this.insurancePaymentsRequests = data, error => alert("Error is occured"));
-    }
-
-    onUpdateRequestClick(request: UpdatePolisDataRequest) {
-        this.storeService.setPropertyId(request.id);
-        return this.router.navigateByUrl(`/admin/request/${request.id}`);
-    }
-
-    onInsurancePaymentRequestClick(request: InsurancePaymentsRequest) {
-        this.storeService.setPropertyId(request.id);
-        return this.router.navigateByUrl(`/admin/request/${request.id}`);
     }
 }

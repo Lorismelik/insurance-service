@@ -25,6 +25,10 @@
     </div>
     <br>
     <div *ngIf="updateDataRequests">
+        <update-polis-data-request-popup *ngIf="showUpdateRequestPopup"
+                                         [request]="updateRequest"
+                                         [role]="this.storeService.getRole()"
+                                         (onCloseEvent)="onCloseUpdateRequestPopup()"> </update-polis-data-request-popup>
         <h2>Update polis data requests</h2>
         <div class="centerify">
             <table>
@@ -44,6 +48,10 @@
     </div>
     <br>
     <div *ngIf="insurancePaymentsRequests">
+        <get-payments-request-popup *ngIf="showPaymentsRequestPopup"
+                                         [request]="insurancePaymentsRequest"
+                                         [role]="this.storeService.getRole()"
+                                         (onCloseEvent)="onClosePaymentsRequestPopup()"> </get-payments-request-popup>
         <h2>Get insurance payments requests</h2>
         <div class="centerify">
             <table>
@@ -54,7 +62,7 @@
                     <th>Status</th>
                 </tr>
                 <tr *ngFor="let request of insurancePaymentsRequests"
-                    (click)="onInsurancePaymentRequestClick(request)">
+                    (click)="onPaymentRequestClick(request)">
                     <td>{{request.id}}</td>
                     <td>{{request.insurancePolisId}}</td>
                     <td>{{request.clientId}}</td>
@@ -65,7 +73,7 @@
     </div>
     <br>
     <div class="centerify">
-        <button *ngIf="!showCreateRequestPopup"
+        <button *ngIf="!showCreateRequestPopup && !showPaymentsRequestPopup && !showUpdateRequestPopup"
                 [routerLink]="'/operator/base'"><span>Back</span></button>
     </div>
 </div>

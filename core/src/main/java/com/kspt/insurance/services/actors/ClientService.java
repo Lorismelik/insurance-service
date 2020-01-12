@@ -144,7 +144,10 @@ public class ClientService extends CrudService<Client, ClientRepository> {
         Client client = repository.findById(clientId).orElse(null);
         if (client == null || !client.getIsAuthenticated()) return null;
         final String additionalData = data.get("additionalData");
-        InsurancePaymentsRequest request = new InsurancePaymentsRequest(clientId, additionalData);
+        final Long polisId = Long.parseLong(data.get("polisId"));
+        InsurancePolis polis = insurancePolisRepository.findById(polisId).orElse(null);
+        if (polis == null) return null;
+        InsurancePaymentsRequest request = new InsurancePaymentsRequest(clientId, additionalData, polisId, polis.getInsuranceAgentId());
         InsurancePaymentsRequest savedRequest = insurancePaymentsRequestRepository.save(request);
         List<InsurancePaymentsRequest> insurancePaymentsRequests = client.getInsurancePaymentsRequest();
         insurancePaymentsRequests.add(savedRequest);

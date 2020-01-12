@@ -1,0 +1,57 @@
+<div class="request-popup">
+    <div class="request-popup-content">
+        <h2>Get payments request</h2>
+        <div class="centerify">
+            <table>
+                <tr>
+                    <th>Client</th>
+                    <th>Policy</th>
+                    <th>Operator</th>
+                    <th>Agent</th>
+                    <th>Date</th>
+                    <th>Payments</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>{{client}}</td>
+                    <td>{{request.insurancePolisId}}</td>
+                    <td>{{operator}}</td>
+                    <td>{{agent}}</td>
+                    <td>{{date}}</td>
+                    <td *ngIf="request.status === 'processed' && role === 2">
+                        <input [(ngModel)]="payments"
+                               type="number"
+                               placeholder="0"
+                               name="payments"
+                               id="payments">
+                    </td>
+                    <td *ngIf="request.status !== 'processed' || role !== 2">{{request.payments}}</td>
+                    <td>{{request.status}}</td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <h2>Client comment</h2>
+        <div class="centerify">
+            <div>{{request.additionalData}}</div>
+        </div>
+        <br>
+        <h2>Agent review</h2>
+        <div class="centerify">
+            <div *ngIf="request.status !== 'processed' || role !== 2; else agentReviewInput">{{request.review}}</div>
+        </div>
+        <br>
+        <div class="centerify">
+            <button *ngIf="role === 2 && request.status === 'processed'" class="popup-button" (click)="giveAssessment()"><span>Give an assessment</span></button>
+            <button *ngIf="role === 1 && request.status === 'created'" class="popup-button" (click)="getOnMe()"><span>Get on me</span></button>
+            <button *ngIf="role === 1 && request.status === 'waiting for approve'" class="popup-button" (click)="approve()"><span>Approve</span></button>
+            <button *ngIf="role === 1 && request.status === 'waiting for approve'" class="popup-button" (click)="decline()"><span>Decline</span></button>
+        </div>
+        <div class="centerify">
+            <button  class="popup-button" (click)="close()"><span>Close</span></button>
+        </div>
+        <ng-template #agentReviewInput>
+            <textarea [(ngModel)]="review" name="review" id="review"></textarea>
+        </ng-template>
+    </div>
+</div>
