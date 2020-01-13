@@ -193,8 +193,7 @@ public class ClientService extends CrudService<Client, ClientRepository> {
         return repository.save(client);
     }
 
-    @Transactional
-    public ClosePolisRequest closePolis(@NotNull final Long clientId,
+    public InsurancePolis closePolis(@NotNull final Long clientId,
                                         @NotNull final Long polisId) {
         Client client = repository.findById(clientId).orElse(null);
         if (client == null || !client.getIsAuthenticated()) return null;
@@ -202,9 +201,6 @@ public class ClientService extends CrudService<Client, ClientRepository> {
         if (!optionalInsurancePolis.isPresent()) return null;
         InsurancePolis insurancePolis = optionalInsurancePolis.get();
         insurancePolis.setStatus(Constants.PolisStatus.CLOSED);
-        ClosePolisRequest request = new ClosePolisRequest(polisId, clientId, Instant.now());
-        insurancePolisRepository.save(insurancePolis);
-        return closePolisRequestRepository.save(request);
-
+        return insurancePolisRepository.save(insurancePolis);
     }
 }

@@ -69,6 +69,10 @@ export class ClientService {
         return this.http.post<InsurancePaymentsRequest>(url, {polisId, additionalData});
     }
 
+    public closePolicy(clientId: number, polisId: number) {
+        const url = `${environment.getClientInfo}${clientId}/closePolis/${polisId}`;
+        return this.http.get<Polis>(url);
+    }
 
     private urlWithClientId(urlWithoutId: string, clientId: number): string {
         return urlWithoutId.replace(':clientId', `${clientId}`);

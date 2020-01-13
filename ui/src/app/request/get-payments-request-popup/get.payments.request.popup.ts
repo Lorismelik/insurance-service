@@ -38,8 +38,15 @@ export class GetPaymentsRequestPopup implements OnInit {
     }
 
     approve() {
-        this.operatorService.approvePaymentsRequest(this.storeService.getId(), this.request.id, true)
-            .subscribe(x => this.onCloseEvent.emit(), error => alert("Error is occured"));
+        this.operatorService.getById(this.storeService.getId()).subscribe(x => {
+            if (this.request.payments > x.bank) {
+                alert('You havent enough money');
+            } else {
+                this.operatorService.approvePaymentsRequest(this.storeService.getId(), this.request.id, true)
+                    .subscribe(x => this.onCloseEvent.emit(), error => alert("Error is occured"));
+            }
+        }, error => alert("Error is occured") );
+
     }
 
     getOnMe() {

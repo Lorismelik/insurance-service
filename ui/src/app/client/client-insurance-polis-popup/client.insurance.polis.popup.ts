@@ -34,6 +34,10 @@ export class ClientInsurancePolisPopup implements OnInit {
             .subscribe(x => this.onCloseEvent.emit(), error => alert("Error is occured"));
     }
 
+    closePolicy() {
+        this.clientService.closePolicy(this.storeService.getId(), this.polis.id).subscribe(x => this.onCloseEvent.emit(), error => alert("Error is occured"));
+    }
+
     onPaymentsClick() {
         this.showCommentPopup = true;
     }

@@ -20,7 +20,7 @@
         </div>
     </div>
     <div>
-        <button (click)="createPolis()"><span>Create polis</span></button>
+        <button *ngIf="showCreatePolis" (click)="createPolis()"><span>Create polis</span></button>
     </div>
 
     <div class="centerify">

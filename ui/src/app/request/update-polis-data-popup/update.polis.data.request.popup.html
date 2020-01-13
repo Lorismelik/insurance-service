@@ -24,7 +24,7 @@
         </div>
         <div class="centerify">
             <button *ngIf="role === 1 && request.status === 'created'" class="popup-button" (click)="approve()"><span>Approve</span></button>
-            <button *ngIf="role === 1 && request.status === 'created'" class="popup-button" (click)="approve()"><span>Decline</span></button>
+            <button *ngIf="role === 1 && request.status === 'created'" class="popup-button" (click)="decline()"><span>Decline</span></button>
         </div>
         <div class="centerify">
             <button  class="popup-button" (click)="close()"><span>Close</span></button>

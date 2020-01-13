@@ -13,6 +13,7 @@ export class ClientInsurancePolisComponent implements OnInit {
     private client: Client;
     private showCreateRequestPopup: boolean = false;
     private showPolisPopup: boolean = false;
+    private showCreatePolis: boolean = true;
     private polises: Polis[];
     private polis: Polis;
     constructor(private router: Router,
@@ -21,6 +22,11 @@ export class ClientInsurancePolisComponent implements OnInit {
         this.id = this.storeService.getId();
         this.clientService.getById(this.id).subscribe(data => this.client = data);
         this.clientService.getPolis(this.id).subscribe(x => this.polises = x, error => alert("Error has occured"));
+        this.polises && this.polises.forEach(x => {
+            if (x.status === 'opened') {
+                this.showPolisPopup = false;
+            }
+        });
     }
 
     ngOnInit() {
@@ -38,7 +44,14 @@ export class ClientInsurancePolisComponent implements OnInit {
     onCloseCreatePolisPopup() {
         this.showCreateRequestPopup = false;
     }
+
     onClosePolisPopup() {
         this.showPolisPopup = false;
+        this.clientService.getPolis(this.id).subscribe(x => this.polises = x, error => alert("Error has occured"));
+        this.polises && this.polises.forEach(x => {
+            if (x.status === 'opened') {
+                this.showPolisPopup = false;
+            }
+        });
     }
 }

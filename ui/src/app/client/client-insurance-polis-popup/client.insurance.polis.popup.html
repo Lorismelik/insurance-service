@@ -33,6 +33,7 @@
         <div class="centerify">
             <button *ngIf="polis.status == 'opened'" class="popup-button" (click)="onPaymentsClick()"><span>Request payments</span></button>
             <button *ngIf="polis.status == 'opened'" class="popup-button" (click)="update(data)"><span>Update</span></button>
+            <button *ngIf="polis.status == 'opened'" class="popup-button" (click)="closePolicy()"><span>Close policy</span></button>
         </div>
         <div class="centerify">
             <button  class="popup-button" (click)="close()"><span>Close</span></button>
